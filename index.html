@@ -34,6 +34,21 @@ nav ul a:hover{color:var(--bronze2)}
 .mark{width:min(380px,74vw);height:auto;overflow:visible}
 .mark .loop{fill:none;stroke-width:15;stroke-linecap:round}
 .mark .glow{filter:url(#glow)}
+.intro{display:flex;justify-content:center;align-items:baseline;font-family:Inter,sans-serif;font-weight:700;font-size:clamp(1.7rem,4.4vw,2.7rem);letter-spacing:-.025em;margin:22px 0 6px;min-height:1.3em;white-space:nowrap}
+.w-a,.w-n{font-weight:500;color:var(--muted);font-size:.6em;letter-spacing:-.01em}
+.w-n{display:inline-block;max-width:0;overflow:hidden;vertical-align:baseline;opacity:0;transition:max-width .9s cubic-bezier(.6,0,.2,1),opacity .6s}
+.intro.wide .w-n{max-width:6em;opacity:1}
+.w-b{color:var(--paper)}
+.dot{position:relative;display:inline-block;width:.42em;height:.5em;margin:0 .04em;opacity:0;transition:opacity .2s}
+.dot.on{opacity:1}
+.dot i{position:absolute;left:50%;bottom:.02em;width:.17em;height:.17em;margin-left:-.085em;border-radius:50%;background:var(--bronze);transition:transform .45s cubic-bezier(.5,-0.6,.5,1)}
+.dot svg{position:absolute;left:50%;top:50%;width:.62em;height:.62em;margin:-.36em 0 0 -.31em;fill:var(--bronze2);transform:scale(0) rotate(-120deg);transition:transform .7s cubic-bezier(.2,1.6,.4,1);filter:drop-shadow(0 0 10px #e2b874aa)}
+.dot.spark i{transform:scale(0)}
+.dot.spark svg{transform:scale(1) rotate(0);animation:tw 2.6s 1s ease-in-out infinite}
+@keyframes tw{50%{transform:scale(.8) rotate(45deg)}}
+.caret{display:inline-block;width:.06em;height:.9em;margin-left:.06em;background:var(--bronze2);align-self:center;animation:blink .9s steps(2) infinite}
+.caret.off{opacity:0;animation:none;transition:opacity .4s}
+@keyframes blink{50%{opacity:0}}
 .eyebrow{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--bronze2);margin:26px 0 14px}
 .hero h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.04;max-width:14ch;margin:0 auto}
 .hero h1 em{font-style:italic;color:var(--bronze2)}
@@ -138,7 +153,7 @@ footer a:hover{color:var(--paper)}
       <path class="loop" id="pR" stroke="#b98746"/>
       <circle id="sp" r="22" fill="url(#spark)"/>
     </svg>
-    <div class="eyebrow">Minh Nguyen Studios</div>
+    <div class="intro" id="intro" aria-label="minhnguyen.studio"><span class="w-a" id="wa"></span><span class="w-n" id="wn">nguyen</span><span class="dot" id="dot"><i></i><svg viewBox="-10 -10 20 20"><path d="M0-10L2.2-2.2 10 0 2.2 2.2 0 10-2.2 2.2-10 0-2.2-2.2z"/></svg></span><span class="w-b" id="wb"></span><span class="caret" id="caret"></span></div>
     <h1 class="serif">Spiele, die man <em>weitererzählt.</em></h1>
     <p>Ein unabhängiges Studio aus Deutschland. Wir bauen liebevolle Welten für die Kleinsten – und tiefe Strategie- und Geschichtsspiele für alle, die gern lange nachdenken.</p>
     <div class="actions"><a class="btn primary" href="#spiele">Unsere Spiele entdecken</a><a class="btn ghost" href="#kontakt">Kontakt</a></div>
@@ -273,6 +288,26 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
     const pt=pos<=L1?pl.getPointAtLength(pos):pr.getPointAtLength(pos-L1);sp.setAttribute('cx',pt.x);sp.setAttribute('cy',pt.y);
     sp.setAttribute('r',16+Math.sin(ts/300)*3);requestAnimationFrame(o)})(start)}
   requestAnimationFrame(draw);
+})();
+
+// Studio intro: minh.systems -> minh.studio -> minhnguyen✦studio
+(function(){
+  const box=document.getElementById('intro'),wa=document.getElementById('wa'),wb=document.getElementById('wb'),
+        dot=document.getElementById('dot'),caret=document.getElementById('caret');
+  const done=()=>{wa.textContent='minh';wb.textContent='studio';dot.classList.add('on','spark');box.classList.add('wide');caret.classList.add('off')};
+  if(R)return done();
+  const steps=[];const at=(ms,f)=>steps.push([ms,f]);let t=500;
+  for(const ch of 'minh'){t+=95;const c=ch;at(t,()=>wa.textContent+=c)}
+  t+=160;at(t,()=>dot.classList.add('on'));
+  for(const ch of 'systems'){t+=85;const c=ch;at(t,()=>wb.textContent+=c)}
+  t+=520;for(let i=0;i<6;i++){t+=55;at(t,()=>wb.textContent=wb.textContent.slice(0,-1))}
+  t+=160;for(const ch of 'tudio'){t+=95;const c=ch;at(t,()=>wb.textContent+=c)}
+  t+=380;at(t,()=>box.classList.add('wide'));
+  t+=950;at(t,()=>{dot.classList.add('spark');caret.classList.add('off');
+    const b=dot.getBoundingClientRect();for(let i=0;i<26;i++){const a=Math.random()*7,v=Math.random()*2.6+.6;
+      parts.push({x:b.left+b.width/2,y:b.top+b.height/2,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1})}});
+  for(const [ms,f] of steps)setTimeout(f,ms);
+  box.addEventListener('click',()=>{if(dot.classList.contains('spark'))location.reload()});
 })();
 
 // Fireflies + bronze sparkle trail
