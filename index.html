@@ -4,301 +4,307 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Minh Nguyen Studios</title>
-<meta name="description" content="Minh Nguyen Studios – ein unabhängiges Spielestudio, das Welten mit Herz, Witz und Tiefgang baut.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+<meta name="description" content="Minh Nguyen Studios – unabhängiges Spielestudio aus Deutschland. Spiele für Kinder, Strategie und Geschichte.">
+<link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts.css">
 <style>
 :root{
-  --night:#0b0830; --night2:#1d1260; --dusk:#4b1f7a; --gold:#ffd66b; --pink:#ff7ac6;
-  --mint:#6ff2d0; --sky:#7cc4ff; --ink:#fff8ea; --muted:#cbbfe8;
+  --ink:#0e1312; --ink2:#141c1a; --green:#193f37; --green2:#24564b; --bronze:#b98746; --bronze2:#e2b874;
+  --paper:#f4f2ed; --muted:#a9b3ae; --line:#ffffff17;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--night);color:var(--ink);font-family:Nunito,system-ui,sans-serif;overflow-x:hidden;cursor:none}
-@media (hover:none){body{cursor:auto}}
-h1,h2,h3,.btn,nav a{font-family:Fredoka,Nunito,sans-serif}
-#sky{position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse at 50% 120%,var(--dusk) 0%,var(--night2) 40%,var(--night) 80%)}
-#fx{position:fixed;inset:0;z-index:50;pointer-events:none}
-main{position:relative;z-index:2}
-nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:linear-gradient(#0b0830cc,transparent)}
-nav .logo{display:flex;align-items:center;gap:10px;font-family:Fredoka;font-weight:700;font-size:1.15rem;color:var(--gold);text-decoration:none}
-nav ul{display:flex;gap:22px;list-style:none}
-nav ul a{color:var(--ink);text-decoration:none;font-weight:600;opacity:.85}
-nav ul a:hover{color:var(--gold);opacity:1}
-@media(max-width:640px){nav ul{display:none}}
+body{background:var(--ink);color:var(--paper);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
+.serif{font-family:Fraunces,Georgia,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:500;letter-spacing:-.015em}
+#fx{position:fixed;inset:0;z-index:1;pointer-events:none}
+a{color:inherit}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,4vw,40px);transition:background .3s,backdrop-filter .3s}
+nav.solid{background:#0e1312d9;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav img{height:60px;display:block;margin:-12px 0 -12px -60px}
+@media(max-width:720px){nav img{height:52px;margin-left:-50px}}
+nav ul{display:flex;gap:28px;list-style:none;font-size:.92rem}
+nav ul a{text-decoration:none;color:var(--muted);transition:color .2s}
+nav ul a:hover{color:var(--bronze2)}
+@media(max-width:720px){nav ul{display:none}}
 
 /* HERO */
-.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:100px 16px 40px;position:relative}
-.castle{width:min(520px,90vw);filter:drop-shadow(0 0 40px #ff7ac655);animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
-.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);line-height:1;margin-top:-10px}
-.hero p{font-size:clamp(1.05rem,2.4vw,1.35rem);max-width:640px;margin:18px auto 30px;color:var(--muted)}
-.letter{display:inline-block;animation:pop .7s cubic-bezier(.3,1.8,.5,1) both;-webkit-text-fill-color:currentColor;text-shadow:0 0 24px currentColor}
-.letter:hover{transform:translateY(-10px) rotate(-8deg);transition:transform .2s}
-@keyframes pop{from{transform:translateY(40px) scale(.3);opacity:0}}
-.btn{display:inline-block;padding:14px 30px;border-radius:999px;border:0;font-size:1.1rem;font-weight:700;color:#2a1050;background:linear-gradient(135deg,var(--gold),#ffb36b);box-shadow:0 8px 30px #ffd66b55;text-decoration:none;cursor:none;transition:transform .2s}
-.btn:hover{transform:translateY(-3px) scale(1.05)}
-.btn.ghost{background:transparent;color:var(--ink);border:2px solid #ffffff55;box-shadow:none;margin-left:10px}
-.hint{position:absolute;bottom:24px;left:0;right:0;font-size:.9rem;color:var(--muted);animation:float 2.5s infinite}
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:110px 16px 70px;overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 50% 45%,#193f3799,transparent 70%),radial-gradient(ellipse at 50% 120%,#24564b66,transparent 60%),var(--ink)}
+.mark{width:min(380px,74vw);height:auto;overflow:visible}
+.mark .loop{fill:none;stroke-width:15;stroke-linecap:round}
+.mark .glow{filter:url(#glow)}
+.eyebrow{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--bronze2);margin:26px 0 14px}
+.hero h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.04;max-width:14ch;margin:0 auto}
+.hero h1 em{font-style:italic;color:var(--bronze2)}
+.hero p{max-width:600px;margin:22px auto 34px;color:var(--muted);font-size:clamp(1rem,2vw,1.15rem)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn.primary{background:var(--bronze);color:#1a1208;box-shadow:0 10px 40px #b9874655}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 50px #b987468a}
+.btn.ghost{border:1px solid #ffffff33;color:var(--paper)}
+.btn.ghost:hover{background:#ffffff10}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.scroll{position:absolute;bottom:26px;left:50%;width:24px;height:38px;margin-left:-12px;border:1.5px solid #ffffff40;border-radius:12px}
+.scroll::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--bronze2);animation:sc 1.8s infinite}
+@keyframes sc{to{transform:translateY(12px);opacity:0}}
 
-section{padding:110px 16px;max-width:1180px;margin:0 auto}
-.kicker{color:var(--pink);font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-size:.85rem;text-align:center}
-section h2{font-size:clamp(2rem,5vw,3.4rem);text-align:center;margin:8px 0 14px}
-.lead{text-align:center;max-width:680px;margin:0 auto 50px;color:var(--muted);font-size:1.1rem}
+section{position:relative;z-index:2;padding:120px clamp(16px,4vw,40px);max-width:1200px;margin:0 auto}
+.kicker{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bronze2)}
+h2{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.1;margin:12px 0 16px}
+.lead{max-width:640px;color:var(--muted);font-size:1.08rem}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:56px}
 
-/* WORLDS */
-.worlds{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px}
-.card{perspective:1200px;height:440px;cursor:none}
-.inner{position:relative;width:100%;height:100%;transition:transform .9s cubic-bezier(.3,1.4,.5,1);transform-style:preserve-3d}
-.card.flipped .inner{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;border-radius:28px;backface-visibility:hidden;overflow:hidden;padding:22px;display:flex;flex-direction:column;border:2px solid #ffffff22;box-shadow:0 20px 60px #0008}
-.front{justify-content:flex-end}
-.front svg{position:absolute;inset:0;width:100%;height:100%}
-.front .lbl{position:relative;background:#0b083099;backdrop-filter:blur(6px);border-radius:18px;padding:14px 16px}
-.front h3{font-size:1.6rem}
-.front small{color:var(--muted)}
-.back{transform:rotateY(180deg);background:linear-gradient(160deg,#2a1866,#130c3c)}
-.back h3{font-size:1.5rem;color:var(--gold);margin-bottom:6px}
-.back p{color:#e9e2ff;line-height:1.55;font-size:.98rem}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.tag{font-size:.78rem;padding:5px 10px;border-radius:999px;background:#ffffff14;border:1px solid #ffffff22}
-.tilt{transition:transform .15s}
-.flip-hint{position:absolute;top:16px;right:16px;font-size:.8rem;background:#ffffffdd;color:#2a1050;padding:4px 10px;border-radius:999px;font-weight:700;z-index:2}
+/* FILTER */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid #ffffff2a;background:transparent;color:var(--muted);padding:9px 18px;border-radius:999px;font:inherit;font-size:.88rem;cursor:pointer;transition:all .25s}
+.chip:hover{color:var(--paper);border-color:#ffffff55}
+.chip.on{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+/* FEATURED */
+.feature{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-bottom:120px;transition:opacity .5s,transform .5s}
+.feature:nth-of-type(even){grid-template-columns:1fr 1.25fr}
+.feature:nth-of-type(even) .media{order:2}
+.feature.hide{display:none}
+@media(max-width:860px){.feature,.feature:nth-of-type(even){grid-template-columns:1fr}.feature:nth-of-type(even) .media{order:0}}
+.media{position:relative;perspective:1200px}
+.frame{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 40px 90px #000a,0 0 0 1px #ffffff14;transition:transform .2s ease-out;transform-style:preserve-3d;background:var(--ink2)}
+.frame img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,0%),#ffffff2e,transparent 45%);opacity:0;transition:opacity .3s}
+.media:hover .frame::after{opacity:1}
+.shot2{position:absolute;width:44%;right:-4%;bottom:-12%;border-radius:14px;box-shadow:0 20px 50px #000c,0 0 0 1px #ffffff22;transform:rotate(3deg);transition:transform .4s}
+.media:hover .shot2{transform:rotate(0) translateY(-6px)}
+@media(max-width:860px){.shot2{display:none}}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:#ffffff0d;border:1px solid var(--line)}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c,#7bd3a8);box-shadow:0 0 10px var(--c,#7bd3a8)}
+.status.prod{--c:var(--bronze2)}
+.status.review{--c:#8ec5ff}
+.feature h3{font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.1;margin:16px 0 6px}
+.meta{color:var(--bronze2);font-size:.9rem;margin-bottom:16px}
+.feature p{color:#cfd6d2;margin-bottom:22px}
+.links{display:flex;gap:10px;flex-wrap:wrap}
+.links .btn{padding:10px 20px;font-size:.88rem}
+
+/* MORE */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.tile{display:block;text-decoration:none;border-radius:18px;overflow:hidden;background:var(--ink2);border:1px solid var(--line);transition:transform .3s,border-color .3s,box-shadow .3s}
+.tile:hover{transform:translateY(-6px);border-color:#b9874699;box-shadow:0 24px 50px #0008}
+.tile img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .6s}
+.tile:hover img{transform:scale(1.05)}
+.tile div{padding:16px 18px 20px}
+.tile h4{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:1.25rem}
+.tile span{display:block;color:var(--muted);font-size:.88rem;margin-top:4px}
+.apps .tile img{aspect-ratio:16/10}
 
 /* VALUES */
-.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.value{background:#ffffff0d;border:1px solid #ffffff1c;border-radius:24px;padding:26px;text-align:center;transition:transform .3s,background .3s}
-.value:hover{transform:translateY(-8px) rotate(-1deg);background:#ffffff18}
-.value .ico{font-size:2.6rem;display:block;margin-bottom:10px;transition:transform .5s}
-.value:hover .ico{transform:rotate(360deg) scale(1.2)}
-.value h3{color:var(--gold);margin-bottom:6px}
-.value p{color:var(--muted)}
-
-/* GAME */
-.game{background:linear-gradient(180deg,#ffffff0a,#ffffff04);border:2px dashed #ffd66b55;border-radius:32px;padding:30px;text-align:center}
-#play{width:100%;height:340px;display:block;border-radius:20px;background:radial-gradient(circle at 50% 100%,#3a1d7a,#120a3a);touch-action:none}
-.score{display:flex;justify-content:center;gap:30px;margin:16px 0;font-family:Fredoka;font-size:1.3rem}
-.score b{color:var(--gold)}
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.value{background:var(--ink);padding:34px 28px;transition:background .3s}
+.value:hover{background:#193f3755}
+.value b{display:block;font-family:Fraunces,Georgia,serif;font-weight:500;font-size:1.35rem;margin:14px 0 8px}
+.value p{color:var(--muted);font-size:.95rem}
+.value svg{width:30px;height:30px;stroke:var(--bronze2);fill:none;stroke-width:1.6}
 
 /* CONTACT */
-.contact{text-align:center}
-.mail{font-family:Fredoka;font-size:clamp(1.4rem,4vw,2.4rem);color:var(--gold);text-decoration:none;border-bottom:3px dotted var(--pink)}
-footer{position:relative;z-index:2;text-align:center;padding:40px 16px 60px;color:var(--muted);font-size:.9rem}
-footer a{color:var(--muted)}
+.contact{text-align:center;padding-bottom:140px}
+.mail{font-family:Fraunces,Georgia,serif;font-size:clamp(1.6rem,5vw,3.2rem);text-decoration:none;background:linear-gradient(var(--bronze),var(--bronze)) 0 100%/0 2px no-repeat;transition:background-size .4s}
+.mail:hover{background-size:100% 2px}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:30px clamp(16px,4vw,40px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--muted);font-size:.86rem}
+footer a{color:var(--muted);text-decoration:none;margin-left:18px}
+footer a:hover{color:var(--paper)}
 
-.reveal{opacity:0;transform:translateY(50px) scale(.97);transition:all .9s cubic-bezier(.2,1.2,.4,1)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
-#wand{position:fixed;z-index:60;pointer-events:none;width:34px;height:34px;transform:translate(-4px,-4px) rotate(-20deg);display:none}
-@media (hover:hover){#wand{display:block}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<canvas id="sky"></canvas>
 <canvas id="fx"></canvas>
-<svg id="wand" viewBox="0 0 34 34"><line x1="6" y1="6" x2="30" y2="30" stroke="#2a1050" stroke-width="4" stroke-linecap="round"/><line x1="6" y1="6" x2="30" y2="30" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M6 0l1.6 4.4L12 6l-4.4 1.6L6 12 4.4 7.6 0 6l4.4-1.6z" fill="#ffd66b"/></svg>
 
-<nav>
-  <a class="logo" href="#top"><svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 1l2.9 7.1L22 9l-5.5 4.8L18.2 21 12 17.3 5.8 21l1.7-7.2L2 9l7.1-.9z" fill="#ffd66b"/></svg>Minh Nguyen Studios</a>
-  <ul><li><a href="#welten">Welten</a></li><li><a href="#studio">Studio</a></li><li><a href="#spiel">Spielen</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+<nav id="nav">
+  <a href="#top" aria-label="minh.studios – Startseite"><img src="brand/wortmarke-weiss.svg" alt="minh.studios"></a>
+  <ul><li><a href="#spiele">Spiele</a></li><li><a href="#mehr">Mehr Spiele</a></li><li><a href="#apps">Apps</a></li><li><a href="#studio">Studio</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
 </nav>
 
-<main id="top">
-<header class="hero">
+<header class="hero" id="top">
   <div>
-    <svg class="castle" viewBox="0 0 520 300" aria-hidden="true">
+    <svg class="mark" id="mark" viewBox="-200 -110 400 220" aria-hidden="true">
       <defs>
-        <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6f5"/><stop offset="1" stop-color="#b9a4ff"/></linearGradient>
-        <linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff7ac6"/><stop offset="1" stop-color="#7b3fe4"/></linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+        <radialGradient id="spark"><stop offset="0" stop-color="#fff"/><stop offset=".35" stop-color="#ffe2a8"/><stop offset="1" stop-color="#e2b87400"/></radialGradient>
       </defs>
-      <ellipse cx="260" cy="290" rx="240" ry="16" fill="#ffffff10"/>
-      <rect x="120" y="150" width="280" height="140" rx="6" fill="url(#cg)"/>
-      <rect x="70" y="110" width="60" height="180" rx="4" fill="url(#cg)"/><polygon points="62,112 100,30 138,112" fill="url(#rg)"/>
-      <rect x="390" y="110" width="60" height="180" rx="4" fill="url(#cg)"/><polygon points="382,112 420,30 458,112" fill="url(#rg)"/>
-      <rect x="215" y="70" width="90" height="220" rx="4" fill="url(#cg)"/><polygon points="205,72 260,-10 315,72" fill="url(#rg)"/>
-      <rect x="160" y="120" width="44" height="40" fill="url(#cg)"/><polygon points="154,122 182,70 210,122" fill="url(#rg)"/>
-      <rect x="316" y="120" width="44" height="40" fill="url(#cg)"/><polygon points="310,122 338,70 366,122" fill="url(#rg)"/>
-      <path d="M235 290v-50a25 25 0 0150 0v50z" fill="#2a1050"/>
-      <g fill="#ffd66b"><circle class="win" cx="100" cy="160" r="8"/><circle class="win" cx="420" cy="160" r="8"/><circle class="win" cx="260" cy="130" r="11"/><circle class="win" cx="182" cy="190" r="7"/><circle class="win" cx="338" cy="190" r="7"/></g>
-      <g stroke="#ffd66b" stroke-width="2"><line x1="100" y1="30" x2="100" y2="12"/><line x1="420" y1="30" x2="420" y2="12"/><line x1="260" y1="-10" x2="260" y2="-28"/></g>
+      <circle r="104" fill="#193f37" opacity=".55"/>
+      <path class="loop glow" id="gL" stroke="#3f8f7c" opacity=".55"/>
+      <path class="loop glow" id="gR" stroke="#e2b874" opacity=".7"/>
+      <path class="loop" id="pL" stroke="#f4f2ed"/>
+      <path class="loop" id="pR" stroke="#b98746"/>
+      <circle id="sp" r="22" fill="url(#spark)"/>
     </svg>
-    <h1 id="title">Minh Nguyen Studios</h1>
-    <p>Wir bauen Welten zum Verlieben: Schrottplätze voller Schätze, Fernsehsender im Chaos, Krankenhäuser im Zeitalter der Mikroben und dampfende Städte aus Messing.</p>
-    <a class="btn" href="#welten">Welten entdecken ✨</a><a class="btn ghost" href="#spiel">Sterne fangen</a>
+    <div class="eyebrow">Minh Nguyen Studios</div>
+    <h1 class="serif">Spiele, die man <em>weitererzählt.</em></h1>
+    <p>Ein unabhängiges Studio aus Deutschland. Wir bauen liebevolle Welten für die Kleinsten – und tiefe Strategie- und Geschichtsspiele für alle, die gern lange nachdenken.</p>
+    <div class="actions"><a class="btn primary" href="#spiele">Unsere Spiele entdecken</a><a class="btn ghost" href="#kontakt">Kontakt</a></div>
   </div>
-  <div class="hint">Klick in den Himmel – es passiert etwas ✦</div>
+  <div class="scroll" aria-hidden="true"></div>
 </header>
 
-<section id="welten">
-  <div class="kicker reveal">Unsere Projekte</div>
-  <h2 class="reveal">Vier Welten, ein Funke</h2>
-  <p class="lead reveal">Tipp eine Karte an, um sie umzudrehen und mehr über die Welt dahinter zu erfahren.</p>
-  <div class="worlds">
+<main>
+<section id="spiele">
+  <div class="head">
+    <div class="reveal"><div class="kicker">Aktuelle Spiele</div><h2 class="serif">Fünf Welten aus unserer Werkstatt</h2><p class="lead">Veröffentlicht, in der Prüfung oder mitten in der Produktion – das ist, woran wir gerade mit ganzem Herzen arbeiten.</p></div>
+    <div class="chips reveal" role="group" aria-label="Filter"><button class="chip on" data-f="all">Alle</button><button class="chip" data-f="kids">Für Kinder</button><button class="chip" data-f="strat">Strategie &amp; Geschichte</button></div>
+  </div>
 
-    <div class="card reveal"><div class="inner tilt">
-      <div class="face front" style="background:#1d2b4a">
-        <span class="flip-hint">umdrehen ↻</span>
-        <svg viewBox="0 0 300 440" preserveAspectRatio="xMidYMid slice"><rect width="300" height="440" fill="#ff9a5a"/><circle cx="220" cy="110" r="48" fill="#ffe08a"/><path d="M0 300 L60 230 L110 270 L170 200 L230 260 L300 210 V440 H0z" fill="#8a4b2a"/><path d="M0 340 L80 290 L150 330 L220 280 L300 320 V440 H0z" fill="#5a2e1d"/><g fill="#c9d3dc"><rect x="60" y="250" width="40" height="22" rx="4" transform="rotate(-12 80 260)"/><circle cx="190" cy="235" r="14"/><rect x="215" y="290" width="50" height="16" rx="3"/></g><g class="bob"><rect x="120" y="140" width="10" height="120" fill="#ffd66b"/><rect x="120" y="140" width="90" height="10" fill="#ffd66b"/><line x1="200" y1="150" x2="200" y2="200" stroke="#333" stroke-width="2"/><circle cx="200" cy="208" r="9" fill="#555"/></g></svg>
-        <div class="lbl"><h3>Salvage Empire</h3><small>Schrottplatz-Tycoon · iPhone &amp; iPad</small></div>
-      </div>
-      <div class="face back">
-        <h3>Salvage Empire</h3>
-        <p>Aus einem staubigen Hinterhof wird ein Imperium. Kaufe Wracks, zerlege sie, finde den einen seltenen Schatz zwischen tausend Schrauben – und baue Stück für Stück den größten Schrottplatz des Landes.</p>
-        <div class="tags"><span class="tag">Tycoon</span><span class="tag">iOS</span><span class="tag">Sammeln &amp; Ausbauen</span></div>
-      </div>
-    </div></div>
+  <article class="feature reveal" data-cat="kids">
+    <div class="media"><div class="frame"><img src="img/summgarten.webp" alt="Singende Pflanzen und Tierchen aus Summgarten" loading="lazy"></div><img class="shot2" src="img/summgarten-shot.webp" alt="" loading="lazy"></div>
+    <div>
+      <span class="status">Im App Store</span>
+      <h3 class="serif">Summgarten</h3>
+      <div class="meta">Singender Garten · iPhone &amp; iPad · ab 3 Jahren</div>
+      <p>Die Stimme deines Kindes wird zum Samen: Jedes aufgenommene Geräusch lässt eine Pflanze oder ein Tierchen wachsen, das den Klang im Takt vorsingt – bis ein kleines Orchester entsteht. Ohne Werbung, ohne In-App-Käufe, ohne Datensammeln.</p>
+      <div class="links"><a class="btn primary" href="https://apps.apple.com/app/id6824160993" target="_blank" rel="noopener">Im App Store laden</a></div>
+    </div>
+  </article>
 
-    <div class="card reveal"><div class="inner tilt">
-      <div class="face front">
-        <span class="flip-hint">umdrehen ↻</span>
-        <svg viewBox="0 0 300 440" preserveAspectRatio="xMidYMid slice"><rect width="300" height="440" fill="#2b1a6b"/><g fill="#ffffff22"><circle cx="40" cy="60" r="2"/><circle cx="260" cy="40" r="2"/><circle cx="150" cy="30" r="1.5"/></g><rect x="90" y="90" width="120" height="330" fill="#5b3fd0"/><g fill="#ffd66b">
-          <rect x="105" y="110" width="25" height="18" class="blink"/><rect x="170" y="110" width="25" height="18"/><rect x="105" y="150" width="25" height="18"/><rect x="170" y="150" width="25" height="18" class="blink"/><rect x="105" y="190" width="25" height="18" class="blink"/><rect x="170" y="190" width="25" height="18"/><rect x="105" y="230" width="25" height="18"/><rect x="170" y="230" width="25" height="18" class="blink"/></g><line x1="150" y1="90" x2="150" y2="30" stroke="#ff7ac6" stroke-width="4"/><circle cx="150" cy="28" r="8" fill="#ff7ac6" class="blink"/><g stroke="#ff7ac6" stroke-width="2" fill="none" opacity=".7"><path d="M130 28a20 20 0 0140 0"/><path d="M118 28a32 32 0 0164 0"/></g><rect x="30" y="300" width="70" height="52" rx="10" fill="#6ff2d0"/><rect x="38" y="308" width="54" height="36" rx="5" fill="#1d1260"/><text x="65" y="332" font-size="14" text-anchor="middle" fill="#ff7ac6" font-family="Fredoka">ON AIR</text></svg>
-        <div class="lbl"><h3>Channel Chaos</h3><small>TV-Sender-Simulation · Steam</small></div>
-      </div>
-      <div class="face back">
-        <h3>Channel Chaos</h3>
-        <p>Ein ganzer Medienturm, jede Etage voller Leben. Kaufe Shows, jongliere mit Werbekunden, rette die Quote am Freitagabend – und entscheide, was für ein Sender du werden willst.</p>
-        <div class="tags"><span class="tag">Management</span><span class="tag">PC</span><span class="tag">Medienturm</span></div>
-      </div>
-    </div></div>
+  <article class="feature reveal" data-cat="kids">
+    <div class="media"><div class="frame"><img src="img/gutenacht.webp" alt="Gute Nacht, Spielzeug – Spielzeug im Kinderzimmer am Abend" loading="lazy"></div></div>
+    <div>
+      <span class="status review">Bald im App Store</span>
+      <h3 class="serif">Gute Nacht, Spielzeug</h3>
+      <div class="meta">Interaktives Bilderbuch · iPhone &amp; iPad · ab 3 Jahren</div>
+      <p>Jedes Spielzeug hatte einen großen Tag. Dein Kind schenkt ihm einen kleinen, liebevollen Abschluss – ein ruhiges Bilderbuch zum Mitspielen, gemacht für die letzten Minuten vor dem Einschlafen.</p>
+      <div class="links"><a class="btn ghost" href="https://minh.systems/GuteNachtSpielzeug/" target="_blank" rel="noopener">Zur Website →</a></div>
+    </div>
+  </article>
 
-    <div class="card reveal"><div class="inner tilt">
-      <div class="face front">
-        <span class="flip-hint">umdrehen ↻</span>
-        <svg viewBox="0 0 300 440" preserveAspectRatio="xMidYMid slice"><rect width="300" height="440" fill="#123a4a"/><circle cx="150" cy="190" r="110" fill="#e8f7ef"/><circle cx="150" cy="190" r="110" fill="none" stroke="#b08a4a" stroke-width="14"/><g class="spin" style="transform-origin:150px 190px"><circle cx="110" cy="160" r="16" fill="#6ff2d0" opacity=".8"/><circle cx="185" cy="150" r="11" fill="#ff7ac6" opacity=".8"/><circle cx="170" cy="225" r="18" fill="#7cc4ff" opacity=".8"/><ellipse cx="120" cy="220" rx="20" ry="8" fill="#ffd66b" opacity=".8"/></g><g fill="#0b0830" opacity=".5"><circle cx="106" cy="157" r="3"/><circle cx="173" cy="222" r="3"/></g><rect x="128" y="300" width="44" height="90" fill="#b08a4a"/><rect x="90" y="385" width="120" height="20" rx="6" fill="#7a5a2a"/></svg>
-        <div class="lbl"><h3>Germ Theory</h3><small>Krankenhaus-Aufbausim 1875–1895 · Steam</small></div>
-      </div>
-      <div class="face back">
-        <h3>Germ Theory</h3>
-        <p>„The germs are real. Nobody believes you.“ Leite ein Krankenhaus in einer norddeutschen Hafenstadt, als die Medizin von Miasmen zu Mikroben wechselt – jede Entdeckung ist echt, jeder Fortschritt hart erkämpft.</p>
-        <div class="tags"><span class="tag">Aufbausim</span><span class="tag">Historisch</span><span class="tag">In Entwicklung</span></div>
-      </div>
-    </div></div>
+  <article class="feature reveal" data-cat="kids">
+    <div class="media"><div class="frame"><img src="img/reparierer.webp" alt="Biber Bruno freut sich über ein repariertes Fahrrad" loading="lazy"></div><img class="shot2" src="img/reparierer-shot.webp" alt="" loading="lazy"></div>
+    <div>
+      <span class="status prod">In Produktion</span>
+      <h3 class="serif">Kleiner Reparierer</h3>
+      <div class="meta">Werkstatt-Spiel · iPhone &amp; iPad · 3–6 Jahre</div>
+      <p>Biber Bruno hat eine Werkstatt, und die Tiere aus dem Dorf bringen ihm ihre kaputten Sachen. Dein Kind findet durch Ausprobieren heraus, was passt: reparieren, putzen, anmalen – ganz ohne Texte und ohne Scheitern.</p>
+    </div>
+  </article>
 
-    <div class="card reveal"><div class="inner tilt">
-      <div class="face front">
-        <span class="flip-hint">umdrehen ↻</span>
-        <svg viewBox="0 0 300 440" preserveAspectRatio="xMidYMid slice"><rect width="300" height="440" fill="#3a2418"/><g fill="#ffffff" opacity=".18" class="steam"><circle cx="80" cy="90" r="26"/><circle cx="110" cy="70" r="20"/><circle cx="210" cy="110" r="24"/></g><rect x="70" y="120" width="26" height="120" fill="#b5652f"/><rect x="200" y="140" width="26" height="100" fill="#b5652f"/><path d="M30 440V250h240v190z" fill="#7a4a2a"/><rect x="50" y="230" width="200" height="30" fill="#c9883d"/><g class="spin" style="transform-origin:150px 330px"><circle cx="150" cy="330" r="52" fill="none" stroke="#ffd66b" stroke-width="16" stroke-dasharray="14 10"/><circle cx="150" cy="330" r="22" fill="#ffd66b"/></g><g class="spin rev" style="transform-origin:238px 290px"><circle cx="238" cy="290" r="26" fill="none" stroke="#e8b04a" stroke-width="10" stroke-dasharray="9 7"/></g></svg>
-        <div class="lbl"><h3>Boilerworks</h3><small>Steampunk-Städtebau · Steam</small></div>
-      </div>
-      <div class="face back">
-        <h3>Boilerworks</h3>
-        <p>Messing, Dampf und große Träume: Errichte eine Stadt aus Zahnrädern und Kesseln, halte die Maschinen am Laufen und führe dein Volk durch ein Zeitalter voller Erfindungen.</p>
-        <div class="tags"><span class="tag">Städtebau</span><span class="tag">Strategie</span><span class="tag">In Entwicklung</span></div>
-      </div>
-    </div></div>
+  <article class="feature reveal" data-cat="strat">
+    <div class="media"><div class="frame"><img src="img/kontor.webp" alt="Kontor – Hamburger Handelskontor um 1600" loading="lazy"></div><img class="shot2" src="img/kontor-shot.webp" alt="" loading="lazy"></div>
+    <div>
+      <span class="status prod">In Vorbereitung</span>
+      <h3 class="serif">Kontor</h3>
+      <div class="meta">Wirtschafts- &amp; Strategiespiel · iPad, Mac, PC</div>
+      <p>Hamburg, 1600. Dein Siegel. Dein Risiko. Du führst ein Kontor und erfindest die Versicherung – handelst mit Gefahr und baust aus Briefen, Schiffslisten und Totenregistern deine eigene Statistik auf.</p>
+      <div class="links"><a class="btn ghost" href="https://minh.systems/Kontor/" target="_blank" rel="noopener">Zur Website →</a></div>
+    </div>
+  </article>
 
+  <article class="feature reveal" data-cat="strat">
+    <div class="media"><div class="frame"><img src="img/germ-shot.webp" alt="Germ Theory – Querschnitt durch eine Krankenstation" loading="lazy"></div><img class="shot2" src="img/germ.webp" alt="" loading="lazy"></div>
+    <div>
+      <span class="status prod">In Produktion</span>
+      <h3 class="serif">Germ Theory</h3>
+      <div class="meta">Krankenhaus-Aufbausimulation · Steam</div>
+      <p>„The germs are real. Nobody believes you.“ Leite ein Krankenhaus in einer Hafenstadt zwischen 1875 und 1892 – in den Jahren, in denen die Medizin von Miasmen zu Mikroben wechselt. Jede Entdeckung ist echt, jeder Fortschritt hart erkämpft.</p>
+    </div>
+  </article>
+</section>
+
+<section id="mehr">
+  <div class="reveal"><div class="kicker">Schon erschienen</div><h2 class="serif">Mehr Spiele</h2><p class="lead" style="margin-bottom:44px">Frühere Spiele von uns – zum direkten Ausprobieren.</p></div>
+  <div class="grid">
+    <a class="tile reveal" href="https://shelterfall.minh.systems/" target="_blank" rel="noopener"><img src="img/shelterfall.webp" alt="" loading="lazy"><div><h4>Shelter Fall</h4><span>Endzeit-Strategie mit Ereignissen und wachsendem Überlebensdruck</span></div></a>
+    <a class="tile reveal" href="https://minh.systems/NomadKitchenTycoon/" target="_blank" rel="noopener"><img src="img/nomadkitchen.webp" alt="" loading="lazy"><div><h4>Nomad Kitchen Tycoon</h4><span>Foodtruck-Management in zwei Städten</span></div></a>
+    <a class="tile reveal" href="https://minh.systems/Ringjahr/" target="_blank" rel="noopener"><img src="img/ringjahr.webp" alt="" loading="lazy"><div><h4>Ringjahr</h4><span>Ruhiges Puzzle über Baumringe und Klima</span></div></a>
+    <a class="tile reveal" href="https://minh.systems/LancetLinen/" target="_blank" rel="noopener"><img src="img/lancetlinen.webp" alt="" loading="lazy"><div><h4>Lancet &amp; Linen</h4><span>Leben als Bader-Chirurg im Jahr 1382 · im Browser</span></div></a>
+  </div>
+</section>
+
+<section id="apps" class="apps">
+  <div class="reveal"><div class="kicker">Auch aus unserer Werkstatt</div><h2 class="serif">Apps</h2><p class="lead" style="margin-bottom:44px">Mit derselben Sorgfalt gebaut: kleine, private Werkzeuge für iPhone und iPad.</p></div>
+  <div class="grid">
+    <a class="tile reveal" href="https://minh.systems/ShotSift/" target="_blank" rel="noopener"><img src="img/shotsift.webp" alt="" loading="lazy"><div><h4>ShotSift</h4><span>Fotos aufräumen – Duplikate, Screenshots, Serien, alles auf dem Gerät</span></div></a>
+    <a class="tile reveal" href="https://minh.systems/Rootling/" target="_blank" rel="noopener"><img src="img/rootling.webp" alt="" loading="lazy"><div><h4>Rootling</h4><span>Stecklinge bewurzeln mit Prognosen und Tagebuch</span></div></a>
+    <a class="tile reveal" href="https://mushbloom.minh.systems/" target="_blank" rel="noopener"><img src="img/mushbloom.webp" alt="" loading="lazy"><div><h4>Mushbloom</h4><span>Begleiter für die Pilzzucht</span></div></a>
+    <a class="tile reveal" href="https://minh.systems/RidgeFocus/" target="_blank" rel="noopener"><img src="img/ridgefocus.webp" alt="" loading="lazy"><div><h4>RidgeFocus</h4><span>Pomodoro und konzentriertes Arbeiten</span></div></a>
   </div>
 </section>
 
 <section id="studio">
-  <div class="kicker reveal">Das Studio</div>
-  <h2 class="reveal">Was uns antreibt</h2>
-  <p class="lead reveal">Minh Nguyen Studios ist ein unabhängiges Studio aus Deutschland. Wir machen Spiele, die man nach dem Ausschalten noch im Kopf weiterspielt.</p>
-  <div class="values">
-    <div class="value reveal"><span class="ico">🪄</span><h3>Staunen</h3><p>Jede Welt soll sich beim ersten Blick wie ein Geschenk anfühlen.</p></div>
-    <div class="value reveal"><span class="ico">⚙️</span><h3>Tiefe</h3><p>Systeme, die man stundenlang erforscht – leicht zu lernen, schwer zu meistern.</p></div>
-    <div class="value reveal"><span class="ico">📜</span><h3>Geschichten</h3><p>Aus jeder Partie wird eine eigene Geschichte, die nur du erlebt hast.</p></div>
-    <div class="value reveal"><span class="ico">💛</span><h3>Herz</h3><p>Humor und Wärme, auch wenn es ernst wird.</p></div>
-  </div>
-</section>
-
-<section id="spiel">
-  <div class="kicker reveal">Kleine Pause?</div>
-  <h2 class="reveal">Fang die Sternschnuppen</h2>
-  <div class="game reveal">
-    <canvas id="play"></canvas>
-    <div class="score"><span>Sterne: <b id="sc">0</b></span><span>Rekord: <b id="hi">0</b></span><span>Zeit: <b id="tm">30</b>s</span></div>
-    <button class="btn" id="start">Los geht's ⭐</button>
+  <div class="reveal" style="margin-bottom:44px"><div class="kicker">Das Studio</div><h2 class="serif">Wofür wir stehen</h2><p class="lead">Minh Nguyen Studios ist ein kleines, unabhängiges Studio. Wir machen weniger Spiele – und dafür jedes so, als wäre es das einzige.</p></div>
+  <div class="values reveal">
+    <div class="value"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><b>Staunen</b><p>Jede Welt soll sich beim ersten Blick wie ein kleines Geschenk anfühlen.</p></div>
+    <div class="value"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z"/></svg><b>Respekt vor Kindern</b><p>Spiele für Kinder ohne Druck, ohne Tricks und mit Eltern im Blick.</p></div>
+    <div class="value"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-6"/></svg><b>Echte Tiefe</b><p>Systeme, die man stundenlang erforscht – leicht zu lernen, schwer zu meistern.</p></div>
+    <div class="value"><svg viewBox="0 0 24 24"><path d="M5 4h10l4 4v12H5zM14 4v5h5M8 13h8M8 17h6"/></svg><b>Geschichte, ernst genommen</b><p>Historische Spiele, gründlich recherchiert und offen darüber, wo sie vereinfachen.</p></div>
   </div>
 </section>
 
 <section id="kontakt" class="contact">
-  <div class="kicker reveal">Sag Hallo</div>
-  <h2 class="reveal">Lass uns zusammen zaubern</h2>
-  <p class="lead reveal">Presse, Publisher, Partner oder einfach Fans – wir freuen uns über jede Nachricht.</p>
-  <a class="mail reveal" href="mailto:hello@minhnguyen.studio">hello@minhnguyen.studio</a>
+  <div class="reveal"><div class="kicker">Presse, Partner, Fans</div><h2 class="serif">Schreib uns.</h2><p class="lead" style="margin:0 auto 34px">Für Presseanfragen, Kooperationen oder einfach ein Hallo.</p>
+  <a class="mail" href="mailto:hello@minhnguyen.studio">hello@minhnguyen.studio</a></div>
 </section>
 </main>
 
-<footer>© <span id="yr"></span> Minh Nguyen Studios · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></footer>
+<footer><span>© <span id="yr"></span> Minh Nguyen Studios</span><span><a href="https://minh.systems/" target="_blank" rel="noopener">minh.systems</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span></footer>
 
-<style>
-.bob{animation:bob 3s ease-in-out infinite;transform-origin:125px 260px}@keyframes bob{50%{transform:rotate(-6deg)}}
-.blink{animation:blink 1.6s steps(2) infinite}@keyframes blink{50%{opacity:.25}}
-.spin{animation:spin 8s linear infinite}.rev{animation-direction:reverse;animation-duration:5s}@keyframes spin{to{transform:rotate(360deg)}}
-.steam{animation:steam 4s ease-in-out infinite}@keyframes steam{50%{transform:translateY(-14px);opacity:.3}}
-.win{animation:blink 3s steps(2) infinite}.win:nth-child(2n){animation-delay:1.3s}
-</style>
 <script>
 const R=matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('yr').textContent=new Date().getFullYear();
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:true});
 
-// Title letters
-const t=document.getElementById('title');
-t.innerHTML=[...t.textContent].map((c,i)=>c===' '?' ':`<span class="letter" style="animation-delay:${i*45}ms;color:${['#ffd66b','#ff7ac6','#7cc4ff','#6ff2d0'][i%4]}">${c}</span>`).join('');
+// Logo: lemniscate drawn by a travelling spark
+(function(){
+  const a=82,N=240,pts=[];
+  for(let i=0;i<=N;i++){const t=i/N*Math.PI*2,s=Math.sin(t),d=1+s*s;pts.push([a*Math.cos(t)/d*1.25,a*s*Math.cos(t)/d*1.5])}
+  const seg=(i0,i1)=>{let d='';for(let i=i0;i<=i1;i++){const p=pts[i%N];d+=(i===i0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1)}return d};
+  const right=seg(Math.round(N*.75),Math.round(N*1.25)),left=seg(Math.round(N*.25),Math.round(N*.75));
+  for(const [id,d] of [['pL',left],['gL',left],['pR',right],['gR',right]])document.getElementById(id).setAttribute('d',d);
+  const pl=document.getElementById('pL'),pr=document.getElementById('pR'),sp=document.getElementById('sp');
+  const L1=pl.getTotalLength(),L2=pr.getTotalLength();
+  for(const p of[pl,pr,document.getElementById('gL'),document.getElementById('gR')]){const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=R?0:L}
+  if(R){sp.style.display='none';return}
+  const T=2600;let t0=null;
+  function draw(ts){if(!t0)t0=ts;const k=Math.min((ts-t0)/T,1),e=1-Math.pow(1-k,3),pos=e*(L1+L2);
+    const dl=Math.min(pos,L1),dr=Math.max(pos-L1,0);
+    pl.style.strokeDashoffset=document.getElementById('gL').style.strokeDashoffset=L1-dl;
+    pr.style.strokeDashoffset=document.getElementById('gR').style.strokeDashoffset=L2-dr;
+    const pt=pos<=L1?pl.getPointAtLength(dl):pr.getPointAtLength(dr);sp.setAttribute('cx',pt.x);sp.setAttribute('cy',pt.y);
+    if(k<1)requestAnimationFrame(draw);else orbit(ts)}
+  function orbit(start){const total=L1+L2;(function o(ts){const pos=((ts-start)/5200*total)%total;
+    const pt=pos<=L1?pl.getPointAtLength(pos):pr.getPointAtLength(pos-L1);sp.setAttribute('cx',pt.x);sp.setAttribute('cy',pt.y);
+    sp.setAttribute('r',16+Math.sin(ts/300)*3);requestAnimationFrame(o)})(start)}
+  requestAnimationFrame(draw);
+})();
 
-// Sky: stars + parallax + shooting stars
-const sky=document.getElementById('sky'),sx=sky.getContext('2d');
-const fx=document.getElementById('fx'),fc=fx.getContext('2d');
-let W,H,stars=[],shoot=[],parts=[],mx=0,my=0;
-function size(){W=innerWidth;H=innerHeight;for(const c of[sky,fx]){c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;c.getContext('2d').setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
- stars=Array.from({length:Math.round(W*H/5000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,d:Math.random()*3+1,p:Math.random()*6}))}
+// Fireflies + bronze sparkle trail
+const fx=document.getElementById('fx'),c=fx.getContext('2d');let W,H,flies=[],parts=[],mx=-999,my=-999;
+function size(){W=innerWidth;H=innerHeight;fx.width=W*devicePixelRatio;fx.height=H*devicePixelRatio;c.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  flies=Array.from({length:Math.min(70,Math.round(W*H/22000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,p:Math.random()*7,r:Math.random()*1.6+.6}))}
 size();addEventListener('resize',size);
-const COLORS=['#ffd66b','#ff7ac6','#6ff2d0','#7cc4ff','#ffffff'];
-function burst(x,y,n=24,s=6){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,v=Math.random()*s+1;parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-1,l:1,c:COLORS[i%5],r:Math.random()*3+2})}}
-function star(ctx,x,y,r,c){ctx.fillStyle=c;ctx.beginPath();for(let i=0;i<10;i++){const a=i*Math.PI/5-Math.PI/2,rr=i%2?r*.45:r;ctx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}ctx.fill()}
-let tm=0;
-function loop(){tm+=.016;sx.clearRect(0,0,W,H);
- const sy=scrollY;
- for(const s of stars){const tw=.5+.5*Math.sin(tm*2+s.p);sx.globalAlpha=.3+tw*.7;sx.fillStyle='#fff';
-  const x=(s.x+mx*s.d*-8)%W,y=((s.y-sy*s.d*.05+my*s.d*-8)%H+H)%H;sx.beginPath();sx.arc((x+W)%W,y,s.r,0,7);sx.fill()}
- sx.globalAlpha=1;
- if(!R&&Math.random()<.012)shoot.push({x:Math.random()*W,y:Math.random()*H*.4,l:1});
- for(const s of shoot){const g=sx.createLinearGradient(s.x,s.y,s.x-120,s.y-50);g.addColorStop(0,'#fff');g.addColorStop(1,'transparent');sx.strokeStyle=g;sx.lineWidth=2;sx.beginPath();sx.moveTo(s.x,s.y);sx.lineTo(s.x-120,s.y-50);sx.stroke();s.x+=12;s.y+=5;s.l-=.02}
- shoot=shoot.filter(s=>s.l>0);
- fc.clearRect(0,0,W,H);
- for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=.12;p.vx*=.98;p.l-=.018;fc.globalAlpha=Math.max(p.l,0);star(fc,p.x,p.y,p.r*p.l+1,p.c)}
- fc.globalAlpha=1;parts=parts.filter(p=>p.l>0);
- requestAnimationFrame(loop)}
-loop();
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;if(!R&&e.pointerType==='mouse'&&Math.random()<.45)parts.push({x:mx,y:my,vx:(Math.random()-.5)*.8,vy:-Math.random()*.8-.2,l:1})});
+function tick(ts){c.clearRect(0,0,W,H);const fade=Math.max(.25,1-scrollY/(H*1.2));
+  for(const f of flies){f.p+=.02;f.vx+=(Math.random()-.5)*.04;f.vy+=(Math.random()-.5)*.04;
+    const dx=f.x-mx,dy=f.y-my,d=Math.hypot(dx,dy);if(d<120){f.vx+=dx/d*.12;f.vy+=dy/d*.12}
+    f.vx*=.97;f.vy*=.97;f.x=(f.x+f.vx+W)%W;f.y=(f.y+f.vy+H)%H;
+    const a=(.35+.65*Math.max(0,Math.sin(f.p)))*fade;const g=c.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*7);
+    g.addColorStop(0,`rgba(255,226,168,${a})`);g.addColorStop(1,'rgba(226,184,116,0)');c.fillStyle=g;c.beginPath();c.arc(f.x,f.y,f.r*7,0,7);c.fill()}
+  for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.l-=.022;c.fillStyle=`rgba(226,184,116,${Math.max(p.l,0)})`;c.beginPath();c.arc(p.x,p.y,1.8*p.l+.4,0,7);c.fill()}
+  parts=parts.filter(p=>p.l>0);if(!R)requestAnimationFrame(tick)}
+requestAnimationFrame(tick);
 
-// Wand cursor + sparkle trail
-const wand=document.getElementById('wand');
-addEventListener('pointermove',e=>{wand.style.left=e.clientX+'px';wand.style.top=e.clientY+'px';mx=e.clientX/W-.5;my=e.clientY/H-.5;
- if(!R&&e.pointerType==='mouse'&&Math.random()<.6)parts.push({x:e.clientX,y:e.clientY,vx:(Math.random()-.5)*1.5,vy:Math.random()*-1,l:.8,c:COLORS[Math.random()*5|0],r:Math.random()*2+1.5})});
-addEventListener('click',e=>{if(!e.target.closest('a,button,.card,#play'))burst(e.clientX,e.clientY,30,7)});
+// Screenshot tilt with light reflection
+document.querySelectorAll('.media').forEach(m=>{const f=m.querySelector('.frame');
+  m.addEventListener('pointermove',e=>{if(e.pointerType!=='mouse'||R)return;const b=m.getBoundingClientRect(),x=(e.clientX-b.left)/b.width,y=(e.clientY-b.top)/b.height;
+    f.style.transform=`rotateY(${(x-.5)*10}deg) rotateX(${(.5-y)*8}deg)`;f.style.setProperty('--gx',x*100+'%');f.style.setProperty('--gy',y*100+'%')});
+  m.addEventListener('pointerleave',()=>f.style.transform='')});
 
-// Cards: flip + tilt
-document.querySelectorAll('.card').forEach(c=>{const inner=c.querySelector('.inner');
- c.addEventListener('click',e=>{c.classList.toggle('flipped');inner.style.transform='';burst(e.clientX,e.clientY,18,5)});
- c.addEventListener('pointermove',e=>{if(c.classList.contains('flipped')||e.pointerType!=='mouse')return;const b=c.getBoundingClientRect();
-  inner.style.transform=`rotateY(${((e.clientX-b.left)/b.width-.5)*16}deg) rotateX(${((e.clientY-b.top)/b.height-.5)*-16}deg)`});
- c.addEventListener('pointerleave',()=>inner.style.transform='')});
+// Filter
+document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===ch));
+  document.querySelectorAll('.feature').forEach(a=>a.classList.toggle('hide',ch.dataset.f!=='all'&&a.dataset.cat!==ch.dataset.f))}));
 
-// Reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*90);io.unobserve(e.target)}}),{threshold:.15});
+// Reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Mini game
-const pc=document.getElementById('play'),pg=pc.getContext('2d'),btn=document.getElementById('start');
-let PW,PH,falling=[],score=0,left=0,running=false,last=0,best=0;
-try{best=+localStorage.getItem('mns-best')||0}catch(e){}
-document.getElementById('hi').textContent=best;
-function psize(){PW=pc.clientWidth;PH=pc.clientHeight;pc.width=PW*devicePixelRatio;pc.height=PH*devicePixelRatio;pg.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
-psize();addEventListener('resize',psize);
-function pdraw(){pg.clearRect(0,0,PW,PH);
- for(const f of falling){pg.save();pg.translate(f.x,f.y);pg.rotate(f.a);star(pg,0,0,f.r,f.c);pg.restore();f.y+=f.v;f.a+=.05}
- falling=falling.filter(f=>f.y<PH+30);
- if(!running){pg.fillStyle='#ffffffaa';pg.font='600 20px Fredoka';pg.textAlign='center';pg.fillText(left===0&&score?`${score} Sterne gefangen! Nochmal?`:'Tippe auf die fallenden Sterne!',PW/2,PH/2)}}
-function ptick(ts){if(running){if(Math.random()<.05+score*.002)falling.push({x:Math.random()*(PW-40)+20,y:-20,v:Math.random()*2+1.5+score*.05,r:Math.random()*8+14,a:0,c:COLORS[Math.random()*4|0]});
-  if(ts-last>1000){last=ts;left--;document.getElementById('tm').textContent=left;if(left<=0)end()}}
- pdraw();requestAnimationFrame(ptick)}
-requestAnimationFrame(ptick);
-function end(){running=false;btn.textContent='Nochmal ⭐';if(score>best){best=score;document.getElementById('hi').textContent=best;try{localStorage.setItem('mns-best',best)}catch(e){}const b=pc.getBoundingClientRect();for(let i=0;i<5;i++)setTimeout(()=>burst(b.left+Math.random()*b.width,b.top+Math.random()*b.height,40,8),i*200)}}
-btn.addEventListener('click',()=>{score=0;left=30;falling=[];running=true;last=performance.now();document.getElementById('sc').textContent=0;document.getElementById('tm').textContent=30;btn.textContent='Läuft …'});
-pc.addEventListener('pointerdown',e=>{if(!running)return;const b=pc.getBoundingClientRect(),x=e.clientX-b.left,y=e.clientY-b.top;
- for(const f of falling)if(Math.hypot(f.x-x,f.y-y)<f.r+14){f.y=PH+100;score++;document.getElementById('sc').textContent=score;burst(e.clientX,e.clientY,16,5);break}});
 </script>
 </body>
 </html>
