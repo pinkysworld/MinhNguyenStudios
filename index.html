@@ -16,7 +16,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--ink);color:var(--paper);font-family:Inter,system-ui,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden}
 .serif{font-family:Fraunces,Georgia,serif;font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:500;letter-spacing:-.015em}
-#fx{position:fixed;inset:0;z-index:1;pointer-events:none}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 a{color:inherit}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,4vw,40px);transition:background .3s,backdrop-filter .3s}
@@ -56,7 +56,17 @@ nav ul a:hover{color:var(--bronze2)}
 @keyframes blink{50%{opacity:0}}
 .eyebrow{font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:var(--bronze2);margin:26px 0 14px}
 .hero h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.04;max-width:14ch;margin:0 auto}
-.hero h1 em{font-style:italic;color:var(--bronze2)}
+.hero h1 em{font-style:italic;padding-right:.08em;background:linear-gradient(100deg,var(--bronze2) 42%,#fff6df 50%,var(--bronze2) 58%) 100% 0/260% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s 4s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:100% 0}35%,100%{background-position:0 0}}
+.mark{cursor:pointer}
+.kicker::before{content:"✦";margin-right:.6em;display:inline-block;animation:twinkle 3s ease-in-out infinite}
+@property --ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.frame::before{content:"";position:absolute;inset:0;z-index:3;border-radius:inherit;padding:2px;pointer-events:none;opacity:0;
+  background:conic-gradient(from var(--ang),transparent 0 70%,#b9874600 72%,#e2b874 86%,#fff6df 89%,transparent 90%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.feature.in .frame::before{animation:trace 2.4s .5s ease-in-out}
+.media:hover .frame::before{animation:trace 1.8s ease-in-out}
+@keyframes trace{0%{--ang:0deg;opacity:0}10%,85%{opacity:1}100%{--ang:360deg;opacity:0}}
 .hero p{max-width:600px;margin:22px auto 34px;color:var(--muted);font-size:clamp(1rem,2vw,1.15rem)}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
 .btn.primary{background:var(--bronze);color:#1a1208;box-shadow:0 10px 40px #b9874655}
@@ -317,19 +327,34 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>40),{passive:
   box.addEventListener('click',()=>{if(dot.classList.contains('spark'))location.reload()});
 })();
 
-// Fireflies + bronze sparkle trail
-const fx=document.getElementById('fx'),c=fx.getContext('2d');let W,H,flies=[],parts=[],mx=-999,my=-999;
-function size(){W=innerWidth;H=innerHeight;fx.width=W*devicePixelRatio;fx.height=H*devicePixelRatio;c.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-  flies=Array.from({length:Math.min(70,Math.round(W*H/22000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,p:Math.random()*7,r:Math.random()*1.6+.6}))}
+// Fireflies, star trail, click bursts, shooting stars; hovering the mark gathers the fireflies into the loop
+const fx=document.getElementById('fx'),c=fx.getContext('2d');let W,H,flies=[],parts=[],shoot=[],mx=-999,my=-999,gather=false;
+function size(){W=innerWidth;H=innerHeight;fx.width=Math.round(W*devicePixelRatio);fx.height=Math.round(H*devicePixelRatio);c.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  flies=Array.from({length:Math.min(80,Math.max(40,Math.round(W*H/20000)))},(_,i)=>({x:Math.random()*W,y:Math.random()*H,vx:0,vy:0,p:Math.random()*7,r:Math.random()*1.6+.6,k:i}))}
 size();addEventListener('resize',size);
-addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;if(!R&&e.pointerType==='mouse'&&Math.random()<.45)parts.push({x:mx,y:my,vx:(Math.random()-.5)*.8,vy:-Math.random()*.8-.2,l:1})});
-function tick(ts){c.clearRect(0,0,W,H);const fade=Math.max(.25,1-scrollY/(H*1.2));
-  for(const f of flies){f.p+=.02;f.vx+=(Math.random()-.5)*.04;f.vy+=(Math.random()-.5)*.04;
-    const dx=f.x-mx,dy=f.y-my,d=Math.hypot(dx,dy);if(d<120){f.vx+=dx/d*.12;f.vy+=dy/d*.12}
-    f.vx*=.97;f.vy*=.97;f.x=(f.x+f.vx+W)%W;f.y=(f.y+f.vy+H)%H;
-    const a=(.35+.65*Math.max(0,Math.sin(f.p)))*fade;const g=c.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*7);
+function star4(x,y,r,col){c.fillStyle=col;c.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4-Math.PI/2,q=i%2?r*.28:r;c.lineTo(x+Math.cos(a)*q,y+Math.sin(a)*q)}c.fill()}
+function burst(x,y,n){for(let i=0;i<n;i++){const a=Math.random()*7,v=Math.random()*3+.8;parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-.6,l:1,s:Math.random()<.5,g:.04})}}
+addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;if(!R&&e.pointerType==='mouse'&&Math.random()<.5)parts.push({x:mx,y:my,vx:(Math.random()-.5)*.8,vy:-Math.random()*.8-.2,l:1,s:Math.random()<.35,g:0})});
+addEventListener('pointerdown',e=>{if(!R&&!e.target.closest('a,button'))burst(e.clientX,e.clientY,22)});
+const markEl=document.getElementById('mark');
+markEl.addEventListener('pointerenter',()=>gather=true);markEl.addEventListener('pointerleave',()=>gather=false);
+markEl.addEventListener('click',()=>{const b=markEl.getBoundingClientRect();burst(b.left+b.width*.78,b.top+b.height*.3,40)});
+function loopPoint(k,n,ts){const m=markEl.getScreenCTM(),t=k/n*Math.PI*2+ts/2600,s=Math.sin(t),d=1+s*s;
+  const p=new DOMPoint(Math.cos(t)/d*82*1.25,s*Math.cos(t)/d*82*1.5).matrixTransform(m);return[p.x,p.y]}
+function tick(ts){if(innerWidth!==W||innerHeight!==H||fx.width!==Math.round(innerWidth*devicePixelRatio))size();c.clearRect(0,0,W,H);const fade=Math.max(.25,1-scrollY/(H*1.2));
+  if(!R&&scrollY<H&&Math.random()<.006)shoot.push({x:Math.random()*W*.8,y:Math.random()*H*.35,vx:7+Math.random()*4,vy:2.2+Math.random()*1.5,l:1});
+  for(const s of shoot){const g=c.createLinearGradient(s.x,s.y,s.x-s.vx*14,s.y-s.vy*14);g.addColorStop(0,`rgba(255,240,210,${s.l})`);g.addColorStop(1,'rgba(226,184,116,0)');
+    c.strokeStyle=g;c.lineWidth=1.6;c.beginPath();c.moveTo(s.x,s.y);c.lineTo(s.x-s.vx*14,s.y-s.vy*14);c.stroke();star4(s.x,s.y,4*s.l,`rgba(255,246,223,${s.l})`);
+    s.x+=s.vx;s.y+=s.vy;s.l-=.012}
+  shoot=shoot.filter(s=>s.l>0);
+  for(const f of flies){f.p+=.02;
+    if(gather){const [tx,ty]=loopPoint(f.k,flies.length,ts);f.vx+=(tx-f.x)*.012;f.vy+=(ty-f.y)*.012;f.vx*=.86;f.vy*=.86}
+    else{f.vx+=(Math.random()-.5)*.04;f.vy+=(Math.random()-.5)*.04;const dx=f.x-mx,dy=f.y-my,d=Math.hypot(dx,dy);if(d<120){f.vx+=dx/d*.12;f.vy+=dy/d*.12}f.vx*=.97;f.vy*=.97}
+    f.x=(f.x+f.vx+W)%W;f.y=(f.y+f.vy+H)%H;
+    const a=(gather?.9:(.35+.65*Math.max(0,Math.sin(f.p))))*fade;const g=c.createRadialGradient(f.x,f.y,0,f.x,f.y,f.r*7);
     g.addColorStop(0,`rgba(255,226,168,${a})`);g.addColorStop(1,'rgba(226,184,116,0)');c.fillStyle=g;c.beginPath();c.arc(f.x,f.y,f.r*7,0,7);c.fill()}
-  for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.l-=.022;c.fillStyle=`rgba(226,184,116,${Math.max(p.l,0)})`;c.beginPath();c.arc(p.x,p.y,1.8*p.l+.4,0,7);c.fill()}
+  for(const p of parts){p.x+=p.vx;p.y+=p.vy;p.vy+=p.g;p.vx*=.97;p.l-=.02;const a=Math.max(p.l,0);
+    if(p.s)star4(p.x,p.y,4.5*a+1,`rgba(255,236,196,${a})`);else{c.fillStyle=`rgba(226,184,116,${a})`;c.beginPath();c.arc(p.x,p.y,1.8*a+.4,0,7);c.fill()}}
   parts=parts.filter(p=>p.l>0);if(!R)requestAnimationFrame(tick)}
 requestAnimationFrame(tick);
 
