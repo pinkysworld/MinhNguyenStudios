@@ -449,10 +449,17 @@ window.sfx=(()=>{let ctx=null,master=null,on=false,amb=null;
     for(let i=0;i<a.length;i++)a[i]=(Math.random()*2-1)*(1-i/a.length);const s=ctx.createBufferSource(),f=ctx.createBiquadFilter(),e=ctx.createGain();
     s.buffer=b;f.type='lowpass';f.frequency.value=freq;e.gain.value=g;s.connect(f).connect(e).connect(master);s.start(n)};
   const PENTA=[523.25,587.33,659.25,783.99,880,1046.5,1174.66,1318.5];
-  function ambient(start){if(!ensure())return;if(start&&!amb){const g=ctx.createGain();g.gain.value=0;g.gain.linearRampToValueAtTime(.05,ctx.currentTime+3);g.connect(master);
-      const os=[130.81,196,261.63,329.63].map((f,i)=>{const o=ctx.createOscillator(),og=ctx.createGain();o.type='sine';o.frequency.value=f;o.detune.value=(i-1.5)*6;og.gain.value=i<2?.6:.25;o.connect(og).connect(g);o.start();return o});
-      const id=setInterval(()=>{if(on&&!document.hidden)tone(PENTA[Math.random()*PENTA.length|0]*(Math.random()<.5?1:.5),{d:2.6,g:.035,attack:.4})},5200);amb={g,os,id}}
-    if(!start&&amb){const a=amb;amb=null;clearInterval(a.id);a.g.gain.linearRampToValueAtTime(0,ctx.currentTime+.8);setTimeout(()=>a.os.forEach(o=>o.stop()),1000)}}
+  // Spieluhr statt Brummen: sanfte Glockentöne über C–Am–F–G, mit leisem Echo
+  const CH=[[523.25,659.25,783.99,1046.5],[440,523.25,659.25,880],[349.23,440,523.25,698.46],[392,493.88,587.33,783.99]];
+  function bell(f,t,g,out){const n=ctx.currentTime+t;[[1,1,2.2],[2,.3,1.1],[3.01,.12,.6]].forEach(([m,v,d])=>{const o=ctx.createOscillator(),e=ctx.createGain();
+      o.frequency.value=f*m;e.gain.setValueAtTime(0,n);e.gain.linearRampToValueAtTime(g*v,n+.006);e.gain.exponentialRampToValueAtTime(.0001,n+d);o.connect(e).connect(out);o.start(n);o.stop(n+d+.05)})}
+  function ambient(start){if(!ensure())return;if(start&&!amb){const g=ctx.createGain();g.gain.value=0;g.gain.linearRampToValueAtTime(1,ctx.currentTime+2);g.connect(master);
+      const dl=ctx.createDelay(1),fb=ctx.createGain(),lp=ctx.createBiquadFilter();dl.delayTime.value=.36;fb.gain.value=.32;lp.type='lowpass';lp.frequency.value=2600;
+      g.connect(dl);dl.connect(lp).connect(fb).connect(dl);lp.connect(master);
+      let bar=0;const play=()=>{if(!on||document.hidden)return;const c=CH[bar++%4];bell(c[0]/2,0,.05,g);
+        const k=3+(Math.random()*2|0);for(let i=0;i<k;i++)if(Math.random()<.8)bell(c[(i+(Math.random()*2|0))%4]*(Math.random()<.25?2:1),.45+i*.55+Math.random()*.08,.035,g)};
+      play();const id=setInterval(play,2800);amb={g,id}}
+    if(!start&&amb){const a=amb;amb=null;clearInterval(a.id);a.g.gain.linearRampToValueAtTime(0,ctx.currentTime+.8)}}
   return{get on(){return on},
     set(v){on=v;try{localStorage.setItem('mns-sound',v?'on':'off')}catch(e){}if(v){ensure();ambient(true);this.chime()}else ambient(false)},
     tone,PENTA,
