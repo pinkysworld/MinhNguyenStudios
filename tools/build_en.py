@@ -71,11 +71,16 @@ T = [
  ('Leben als Bader-Chirurg im Jahr 1382 · im Browser', 'Life as a barber-surgeon in 1382 · in your browser'),
  # apps
  ('<div class="kicker">Auch aus unserer Werkstatt</div>', '<div class="kicker">Also from our workshop</div>'),
- ('Mit derselben Sorgfalt gebaut: kleine, private Werkzeuge für iPhone und iPad.', 'Built with the same care: small, private tools for iPhone and iPad.'),
+ ('Mit derselben Sorgfalt gebaut: kleine, private Werkzeuge für iPhone, iPad und Windows.', 'Built with the same care: small, private tools for iPhone, iPad and Windows.'),
  ('Fotos aufräumen – Duplikate, Screenshots, Serien, alles auf dem Gerät', 'Tidy your photos – duplicates, screenshots, bursts, all on-device'),
  ('Stecklinge bewurzeln mit Prognosen und Tagebuch', 'Root cuttings with forecasts and a journal'),
  ('Begleiter für die Pilzzucht', 'A companion for growing mushrooms'),
  ('Pomodoro und konzentriertes Arbeiten', 'Pomodoro and deep work'),
+ ('Ordner vergleichen und abgleichen unter Windows – mit Vorschau und Rückgängig', 'Compare and sync folders on Windows – with preview and undo'),
+ ('Website zum singenden Garten: Support und Datenschutz', 'Website of the singing garden: support and privacy'),
+ ('Ruhiges Sortierrätsel mit 25 Rätseln', 'A calm sorting puzzle with 25 puzzles'),
+ ('Haushaltsbuch für Windows, offline und ohne Abo', 'Household budget book for Windows, offline, no subscription'),
+ ('Belege und Garantiefristen an einem Ort, offline', 'Receipts and warranty dates in one place, offline'),
  # studio
  ('<div class="kicker">Das Studio</div><h2 class="serif">Wofür wir stehen</h2>', '<div class="kicker">The studio</div><h2 class="serif">What we stand for</h2>'),
  ('Minh Nguyen Studios ist ein kleines, unabhängiges Studio. Wir machen weniger Spiele – und dafür jedes so, als wäre es das einzige.', 'Minh Nguyen Studios is a small, independent studio. We make fewer games – and make each one as if it were the only one.'),
