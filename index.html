@@ -3,25 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Minh Nguyen Studios</title>
-<meta name="description" content="Minh Nguyen Studios – unabhängiges Spielestudio aus Deutschland. Spiele für Kinder, Strategie und Geschichte.">
+<title>Minh Nguyen Studios – Apps &amp; Spiele für Windows, iPhone und Mac</title>
+<meta name="description" content="Unabhängiges Studio aus Deutschland: private Werkzeuge für Ordnung, Dateien und Belege, Lern-Apps, ruhige Spiele und Kinder-Apps für Windows, iPhone, iPad und Mac.">
 <link rel="icon" href="brand/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <meta name="theme-color" content="#0e1312">
+<meta name="color-scheme" content="dark light">
+<script>try{const t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Minh Nguyen Studios">
-<meta property="og:title" content="Minh Nguyen Studios">
-<meta property="og:description" content="Unabhängiges Spielestudio aus Deutschland – liebevolle Spiele für Kinder und tiefe Strategie- und Geschichtsspiele.">
+<meta property="og:title" content="Minh Nguyen Studios – Apps &amp; Spiele">
+<meta property="og:description" content="Private Werkzeuge, ruhige Spiele und Kinder-Apps für Windows, iPhone, iPad und Mac – von einem unabhängigen Studio aus Deutschland.">
 <meta property="og:url" content="https://minh.systems/MinhNguyenStudios/">
 <meta property="og:image" content="https://minh.systems/MinhNguyenStudios/brand/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="de_DE">
+<link rel="canonical" href="https://minh.systems/MinhNguyenStudios/">
 <link rel="alternate" hreflang="de" href="https://minh.systems/MinhNguyenStudios/">
 <link rel="alternate" hreflang="en" href="https://minh.systems/MinhNguyenStudios/en/">
 <link rel="alternate" hreflang="x-default" href="https://minh.systems/MinhNguyenStudios/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://minh.systems/MinhNguyenStudios/brand/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Minh Nguyen Studios","url":"https://minh.systems/MinhNguyenStudios/","logo":"https://minh.systems/MinhNguyenStudios/brand/og.png","email":"mip@gmx.biz"}</script>
 <link rel="stylesheet" href="fonts.css">
 <style>
 :root{
@@ -42,7 +46,8 @@ nav img{height:46px;display:block;margin:-6px 0 -6px -6px}
 nav ul{display:flex;gap:28px;list-style:none;font-size:.92rem;margin-left:auto;margin-right:22px}
 nav ul a{text-decoration:none;color:var(--muted);transition:color .2s}
 nav ul a:hover{color:var(--bronze2)}
-@media(max-width:720px){nav ul{display:none}}
+nav ul a,.snd{white-space:nowrap}
+@media(max-width:940px){nav ul{display:none}}
 
 /* HERO */
 .hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;padding:110px 16px 70px;overflow:hidden;
@@ -211,15 +216,87 @@ footer a:hover{color:var(--paper)}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* CATALOG */
+#apps .head{margin-bottom:40px}
+.group{margin-bottom:46px}
+.group.hide{display:none}
+.group>h3{font-size:1.5rem;margin-bottom:4px}
+.hint-note{color:var(--muted);font-size:.86rem;margin-bottom:6px}
+.cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-top:14px}
+@media(max-width:400px){.cat{grid-template-columns:1fr}}
+.app{display:flex;gap:16px;align-items:flex-start;padding:18px;border-radius:18px;background:var(--ink2);border:1px solid var(--line);transition:border-color .3s,transform .3s}
+.app:hover{border-color:#b9874699;transform:translateY(-3px)}
+.ico{width:56px;height:56px;border-radius:14px;flex:none;object-fit:cover;box-shadow:0 0 0 1px var(--line)}
+.app h4{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:1.18rem;line-height:1.25}
+.app h4 a{text-decoration:none}
+.app h4 a:hover{color:var(--bronze2)}
+.app p{color:var(--muted);font-size:.9rem;line-height:1.45;margin:4px 0 10px}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.pf,.st{font-size:.72rem;font-weight:600;letter-spacing:.03em;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.st{display:inline-flex;align-items:center;gap:6px}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--c)}
+.st.ok{--c:#4fbf8a;color:var(--paper)}
+.st.soon{--c:var(--bronze2);color:var(--paper)}
+.go{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:12px;font-size:.85rem;align-items:center}
+.store{padding:6px 13px;border-radius:999px;background:var(--bronze);color:#1a1208;font-weight:600;text-decoration:none}
+.store:hover{filter:brightness(1.08)}
+.more{color:var(--muted);text-decoration:none}
+.more:hover{color:var(--bronze2)}
+/* GUIDES */
+.guides{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.guides>div{padding:24px;border-radius:18px;background:var(--ink2);border:1px solid var(--line)}
+.guides h3{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:1.25rem;margin-bottom:10px}
+.guides ul{list-style:none}
+.guides li{padding:7px 0;border-top:1px solid var(--line);font-size:.93rem}
+.guides li:first-child{border-top:0}
+.guides a{text-decoration:none;color:var(--paper)}
+.guides a:hover{color:var(--bronze2)}
+@media(max-width:720px){section{padding:80px 16px}}
+
+/* LIGHT MODE: per Schalter (data-theme) oder Systemeinstellung */
+.logo-l{display:none!important;mix-blend-mode:multiply}
+#theme span{font-size:1rem;line-height:1}
+:root[data-theme="light"]{--ink:#f4f2ed;--ink2:#ffffff;--paper:#16201d;--muted:#56625d;--line:#16201d1c;--bronze2:#8d6224}
+:root[data-theme="light"] nav.solid{background:#f4f2ede0}
+:root[data-theme="light"] .logo-d{display:none!important}
+:root[data-theme="light"] .logo-l{display:block!important}
+:root[data-theme="light"] #s1{stroke:#16201d}
+:root[data-theme="light"] .chip,:root[data-theme="light"] .lang,:root[data-theme="light"] .snd,:root[data-theme="light"] .btn.ghost{border-color:#16201d33}
+:root[data-theme="light"] .chip:hover,:root[data-theme="light"] .lang:hover,:root[data-theme="light"] .snd:hover{border-color:#16201d66}
+:root[data-theme="light"] .btn.ghost:hover{background:#16201d0d}
+:root[data-theme="light"] .feature p{color:#3a4642}
+:root[data-theme="light"] .status{background:#16201d08}
+:root[data-theme="light"] .frame{box-shadow:0 30px 70px #16201d33,0 0 0 1px #16201d14}
+:root[data-theme="light"] .app:hover{box-shadow:0 18px 40px #16201d1f}
+:root[data-theme="light"] .hero{background:radial-gradient(ellipse 80% 60% at 50% 45%,#e2b87433,transparent 70%),radial-gradient(ellipse at 50% 120%,#24564b22,transparent 60%),var(--ink)}
+:root[data-theme="light"] .hero h1 em{background-image:linear-gradient(100deg,#8d6224 42%,#c9974f 50%,#8d6224 58%)}
+@media(prefers-color-scheme:light){
+:root:not([data-theme="dark"]){--ink:#f4f2ed;--ink2:#ffffff;--paper:#16201d;--muted:#56625d;--line:#16201d1c;--bronze2:#8d6224}
+:root:not([data-theme="dark"]) nav.solid{background:#f4f2ede0}
+:root:not([data-theme="dark"]) .logo-d{display:none!important}
+:root:not([data-theme="dark"]) .logo-l{display:block!important}
+:root:not([data-theme="dark"]) #s1{stroke:#16201d}
+:root:not([data-theme="dark"]) .chip,:root:not([data-theme="dark"]) .lang,:root:not([data-theme="dark"]) .snd,:root:not([data-theme="dark"]) .btn.ghost{border-color:#16201d33}
+:root:not([data-theme="dark"]) .chip:hover,:root:not([data-theme="dark"]) .lang:hover,:root:not([data-theme="dark"]) .snd:hover{border-color:#16201d66}
+:root:not([data-theme="dark"]) .btn.ghost:hover{background:#16201d0d}
+:root:not([data-theme="dark"]) .feature p{color:#3a4642}
+:root:not([data-theme="dark"]) .status{background:#16201d08}
+:root:not([data-theme="dark"]) .frame{box-shadow:0 30px 70px #16201d33,0 0 0 1px #16201d14}
+:root:not([data-theme="dark"]) .app:hover{box-shadow:0 18px 40px #16201d1f}
+:root:not([data-theme="dark"]) .hero{background:radial-gradient(ellipse 80% 60% at 50% 45%,#e2b87433,transparent 70%),radial-gradient(ellipse at 50% 120%,#24564b22,transparent 60%),var(--ink)}
+:root:not([data-theme="dark"]) .hero h1 em{background-image:linear-gradient(100deg,#8d6224 42%,#c9974f 50%,#8d6224 58%)}
+}
 </style>
 </head>
 <body>
 <canvas id="fx"></canvas>
 
 <nav id="nav">
-  <a href="#top" aria-label="Minh Nguyen Studios – Startseite"><img src="brand/wortmarke.svg" alt="Minh Nguyen Studios"></a>
-  <ul><li><a href="#spiele">Spiele</a></li><li><a href="#mehr">Mehr Spiele</a></li><li><a href="#apps">Apps</a></li><li><a href="#studio">Studio</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
+  <a href="#top" aria-label="Minh Nguyen Studios – Startseite"><img class="logo-d" src="brand/wortmarke.svg" alt="Minh Nguyen Studios"><img class="logo-l" src="brand/studio-hell.png" alt="Minh Nguyen Studios"></a>
+  <ul><li><a href="#apps">Apps &amp; Spiele</a></li><li><a href="#spiele">Werkstatt</a></li><li><a href="#ratgeber">Ratgeber</a></li><li><a href="#studio">Studio</a></li><li><a href="#kontakt">Kontakt</a></li></ul>
   <a class="lang" href="en/" hreflang="en" lang="en" title="English">EN</a>
+  <button class="snd" id="theme" aria-label="Hell oder dunkel" title="Hell oder dunkel"><span aria-hidden="true">◐</span></button>
   <button class="snd" id="snd" aria-pressed="false" title="Ton an/aus"><span class="eq"><i></i><i></i><i></i></span><span id="sndl">Ton aus</span></button>
 </nav>
 
@@ -241,18 +318,30 @@ footer a:hover{color:var(--paper)}
       <circle id="sp" r="22" fill="url(#spark)"/>
     </svg>
     <div class="intro" id="intro" aria-label="minhnguyen.studio"><span class="w-a" id="wa"></span><span class="w-n" id="wn">nguyen</span><span class="dot" id="dot"><i></i><svg viewBox="-10 -10 20 20"><path d="M0-10L2.2-2.2 10 0 2.2 2.2 0 10-2.2 2.2-10 0-2.2-2.2z"/></svg></span><span class="w-b" id="wb"></span><span class="caret" id="caret"></span></div>
-    <h1 class="serif">Spiele, die man <em>weitererzählt.</em></h1>
-    <p>Ein unabhängiges Studio aus Deutschland. Wir bauen liebevolle Welten für die Kleinsten – und tiefe Strategie- und Geschichtsspiele für alle, die gern lange nachdenken.</p>
-    <div class="actions"><a class="btn primary" href="#spiele">Unsere Spiele entdecken</a><a class="btn ghost" href="#kontakt">Kontakt</a></div>
+    <h1 class="serif">Apps &amp; Spiele, die man <em>weitererzählt.</em></h1>
+    <p>Ein unabhängiges Studio aus Deutschland. Wir bauen kleine, private Werkzeuge für Ordnung und Alltag, liebevolle Welten für die Kleinsten – und tiefe Strategiespiele für alle, die gern lange nachdenken.</p>
+    <div class="actions"><a class="btn primary" href="#apps">Alle Apps &amp; Spiele</a><a class="btn ghost" href="#kontakt">Kontakt</a></div>
   </div>
   <div class="scroll" aria-hidden="true"></div>
 </header>
 
 <main>
+<!-- katalog:start -->
+<section id="apps">
+  <div class="head"><div class="reveal"><div class="kicker">Alles aus unserer Werkstatt</div><h2 class="serif">Apps &amp; Spiele</h2><p class="lead">Kleine, private Werkzeuge und ruhige Spiele für Windows, iPhone, iPad und Mac – ohne Konto, meist offline.</p></div>
+  <div class="chips reveal" id="kat" role="group" aria-label="Nach Bereich filtern"><button class="chip on" data-k="all">Alle</button><button class="chip" data-k="spiele">Spiele</button><button class="chip" data-k="ordnung">Ordnung &amp; Dateien</button><button class="chip" data-k="finanzen">Finanzen &amp; Belege</button><button class="chip" data-k="lernen">Lernen &amp; Alltag</button><button class="chip" data-k="kinder">Für Kinder</button></div></div>
+  <div class="group" data-k="spiele"><h3 class="serif">Spiele</h3><div class="cat"><article class="app" data-cat="spiele"><img class="ico" src="img/icons/shelterfall.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://shelterfall.minh.systems/">Shelter Fall</a></h4><p>Endzeit-Strategie mit Ereignissen und wachsendem Überlebensdruck.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6759238842" target="_blank" rel="noopener">App Store</a><a class="more" href="https://shelterfall.minh.systems/">Website →</a></div></div></article><article class="app" data-cat="spiele"><img class="ico" src="img/icons/nomad.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/NomadKitchenTycoon/">Nomad Kitchen Tycoon</a></h4><p>Foodtruck-Management in zwei Städten.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6759504817" target="_blank" rel="noopener">App Store</a><a class="more" href="https://minh.systems/NomadKitchenTycoon/">Website →</a></div></div></article><article class="app" data-cat="spiele"><img class="ico" src="img/icons/cogwisp.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Cogwisp/">Cogwisp</a></h4><p>Entspannte Zahnrad-Rätsel ohne Werbung.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">Windows</span></div><div class="go"><a class="store" href="https://apps.microsoft.com/detail/9NSRPBK9PL5N" target="_blank" rel="noopener">Microsoft Store</a><a class="more" href="https://minh.systems/Cogwisp/">Website →</a></div></div></article><article class="app" data-cat="spiele"><img class="ico" src="img/icons/littlekeepings.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/LittleKeepings/">Little Keepings</a></h4><p>Ruhiges Sortierrätsel ohne Zeitdruck.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">Windows</span></div><div class="go"><a class="store" href="https://apps.microsoft.com/detail/9N1WQT29BF8W" target="_blank" rel="noopener">Microsoft Store</a><a class="more" href="https://minh.systems/LittleKeepings/">Website →</a></div></div></article></div></div>
+  <div class="group" data-k="ordnung"><h3 class="serif">Ordnung &amp; Dateien</h3><div class="cat"><article class="app" data-cat="ordnung"><img class="ico" src="img/icons/folvane.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Folvane/">Folvane</a></h4><p>Ordner vergleichen, synchronisieren und Backups prüfen – mit Vorschau und Rückgängig.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">Windows</span></div><div class="go"><a class="store" href="https://apps.microsoft.com/detail/9NSDC58HLFRR" target="_blank" rel="noopener">Microsoft Store</a><a class="more" href="https://minh.systems/Folvane/">Website →</a></div></div></article><article class="app" data-cat="ordnung"><img class="ico" src="img/icons/pathrova.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Pathrova/">Pathrova</a></h4><p>Findet zu lange Pfade und ungültige Namen, bevor du nach OneDrive oder SharePoint synchronisierst.</p><div class="badges"><span class="st soon">Demnächst</span><span class="pf">Windows</span></div><div class="go"><a class="more" href="https://minh.systems/Pathrova/">Website →</a></div></div></article><article class="app" data-cat="ordnung"><img class="ico" src="img/icons/ablagefuchs.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Ablagefuchs/">Ablagefuchs</a></h4><p>Verträge, Rechnungen und Schreiben an einem Ort – mit Texterkennung und Fristen, offline.</p><div class="badges"><span class="st soon">Demnächst</span><span class="pf">Windows</span></div><div class="go"><a class="more" href="https://minh.systems/Ablagefuchs/">Website →</a></div></div></article><article class="app" data-cat="ordnung"><img class="ico" src="img/icons/fotokehr.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Fotokehr/">Fotokehr</a></h4><p>Fotos und Videos lokal nach Datum sortieren – Originale bleiben unverändert.</p><div class="badges"><span class="st soon">Demnächst</span><span class="pf">Windows</span></div><div class="go"><a class="more" href="https://minh.systems/Fotokehr/">Website →</a></div></div></article><article class="app" data-cat="ordnung"><img class="ico" src="img/icons/plauderbuch.webp" alt="" width="56" height="56" loading="lazy"><div><h4>Plauderbuch</h4><p>Exportierte Chatverläufe zusammenführen und als Erinnerung aufbewahren.</p><div class="badges"><span class="st soon">Demnächst</span><span class="pf">Windows</span></div></div></article><article class="app" data-cat="ordnung"><img class="ico" src="img/icons/shotsift.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/ShotSift/">ShotSift</a></h4><p>Fotos aufräumen – Duplikate, Screenshots und Serien, alles auf dem Gerät.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6758222349" target="_blank" rel="noopener">App Store</a><a class="more" href="https://minh.systems/ShotSift/">Website →</a></div></div></article></div></div>
+  <div class="group" data-k="finanzen"><h3 class="serif">Finanzen &amp; Belege</h3><p class="hint-note">Zum Erfassen und Ordnen – keine Finanz- oder Steuerberatung.</p><div class="cat"><article class="app" data-cat="finanzen"><img class="ico" src="img/icons/monatsklar.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Monatsklar/">Monatsklar</a></h4><p>Haushaltsbuch für Windows – offline und ohne Abo.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">Windows</span></div><div class="go"><a class="store" href="https://apps.microsoft.com/detail/9N6JM2J3LC27" target="_blank" rel="noopener">Microsoft Store</a><a class="more" href="https://minh.systems/Monatsklar/">Website →</a></div></div></article><article class="app" data-cat="finanzen"><img class="ico" src="img/icons/belegora.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/belegora/">Belegora</a></h4><p>Belege, Geräte und Garantiefristen an einem Ort, offline.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">Windows</span></div><div class="go"><a class="store" href="https://apps.microsoft.com/detail/9NB7QSNC6MJQ" target="_blank" rel="noopener">Microsoft Store</a><a class="more" href="https://minh.systems/belegora/">Website →</a></div></div></article></div></div>
+  <div class="group" data-k="lernen"><h3 class="serif">Lernen &amp; Alltag</h3><div class="cat"><article class="app" data-cat="lernen"><img class="ico" src="img/icons/tastenflink.webp" alt="" width="56" height="56" loading="lazy"><div><h4>Tastenflink</h4><p>Zehnfingerschreiben lernen – Schritt für Schritt, ohne Konto.</p><div class="badges"><span class="st soon">Demnächst</span><span class="pf">Windows</span></div></div></article><article class="app" data-cat="lernen"><img class="ico" src="img/icons/ridgefocus.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/RidgeFocus/">RidgeFocus</a></h4><p>Pomodoro-Timer für konzentriertes Arbeiten und Lernen.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6758014649" target="_blank" rel="noopener">App Store</a><a class="more" href="https://minh.systems/RidgeFocus/">Website →</a></div></div></article><article class="app" data-cat="lernen"><img class="ico" src="img/icons/rootling.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Rootling/">Rootling</a></h4><p>Stecklinge bewurzeln – mit Prognosen und Pflanzentagebuch.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6758851487" target="_blank" rel="noopener">App Store</a><a class="more" href="https://minh.systems/Rootling/">Website →</a></div></div></article><article class="app" data-cat="lernen"><img class="ico" src="img/icons/mushbloom.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://mushbloom.minh.systems/">MushBloom</a></h4><p>Begleiter für die Pilzzucht zu Hause.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6758917023" target="_blank" rel="noopener">App Store</a><a class="more" href="https://mushbloom.minh.systems/">Website →</a></div></div></article><article class="app" data-cat="lernen"><img class="ico" src="img/icons/horsehold.webp" alt="" width="56" height="56" loading="lazy"><div><h4>Horsehold</h4><p>Stallbuch fürs Pferd: Pflege, Termine und Dokumente.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6826688753" target="_blank" rel="noopener">App Store</a></div></div></article></div></div>
+  <div class="group" data-k="kinder"><h3 class="serif">Für Kinder</h3><div class="cat"><article class="app" data-cat="kinder"><img class="ico" src="img/icons/summgarten.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/Summgarten/">Summgarten</a></h4><p>Singender Garten für Kinder ab 3 – im Microsoft Store als Hum Garden.</p><div class="badges"><span class="st ok">Verfügbar</span><span class="pf">iPhone &amp; iPad</span><span class="pf">Mac</span><span class="pf">Windows</span></div><div class="go"><a class="store" href="https://apps.apple.com/app/id6824160993" target="_blank" rel="noopener">App Store</a><a class="store" href="https://apps.microsoft.com/detail/9PGTW423BB1H" target="_blank" rel="noopener">Microsoft Store</a><a class="more" href="https://minh.systems/Summgarten/">Website →</a></div></div></article><article class="app" data-cat="kinder"><img class="ico" src="img/icons/reparierer.webp" alt="" width="56" height="56" loading="lazy"><div><h4><a href="https://minh.systems/KleinerReparierer/">Kleiner Reparierer</a></h4><p>Mit Biber Bruno reparieren, putzen und anmalen – ohne Texte, ohne Scheitern.</p><div class="badges"><span class="st soon">Demnächst</span><span class="pf">iPhone &amp; iPad</span></div><div class="go"><a class="more" href="https://minh.systems/KleinerReparierer/">Website →</a></div></div></article></div></div>
+</section>
+<!-- katalog:end -->
+
 <section id="spiele">
   <div class="head">
-    <div class="reveal"><div class="kicker">Aktuelle Spiele</div><h2 class="serif">Acht Welten aus unserer Werkstatt</h2><p class="lead">Veröffentlicht, in der Prüfung oder mitten in der Produktion – das ist, woran wir gerade mit ganzem Herzen arbeiten.</p></div>
-    <div class="chips reveal" role="group" aria-label="Filter"><button class="chip on" data-f="all">Alle</button><button class="chip" data-f="kids">Für Kinder</button><button class="chip" data-f="strat">Strategie &amp; Geschichte</button></div>
+    <div class="reveal"><div class="kicker">Aus der Werkstatt</div><h2 class="serif">Acht Welten, an denen wir bauen</h2><p class="lead">Veröffentlicht, in der Prüfung oder mitten in der Produktion – das ist, woran wir gerade mit ganzem Herzen arbeiten.</p></div>
+    <div class="chips reveal" id="wf" role="group" aria-label="Filter"><button class="chip on" data-f="all">Alle</button><button class="chip" data-f="kids">Für Kinder</button><button class="chip" data-f="strat">Strategie &amp; Geschichte</button></div>
   </div>
 
   <article class="feature reveal" data-moment="summgarten" data-video="video/summgarten.mp4" data-cat="kids">
@@ -280,10 +369,11 @@ footer a:hover{color:var(--paper)}
   <article class="feature reveal" data-moment="reparierer" data-cat="kids">
     <div class="media"><div class="frame"><img src="img/reparierer.webp" alt="Biber Bruno freut sich über ein repariertes Fahrrad" loading="lazy"></div><img class="shot2" src="img/reparierer-shot.webp" alt="" loading="lazy"></div>
     <div>
-      <span class="status prod">In Produktion</span>
+      <span class="status review">Bald im App Store</span>
       <h3 class="serif">Kleiner Reparierer</h3>
       <div class="meta">Werkstatt-Spiel · iPhone &amp; iPad · 3–6 Jahre</div>
       <p>Biber Bruno hat eine Werkstatt, und die Tiere aus dem Dorf bringen ihm ihre kaputten Sachen. Dein Kind findet durch Ausprobieren heraus, was passt: reparieren, putzen, anmalen – ganz ohne Texte und ohne Scheitern.</p>
+      <div class="links"><a class="btn ghost" href="https://minh.systems/KleinerReparierer/" target="_blank" rel="noopener">Zur Website →</a></div>
     </div>
   </article>
 
@@ -338,27 +428,24 @@ footer a:hover{color:var(--paper)}
   </article>
 </section>
 
-<section id="mehr">
-  <div class="reveal"><div class="kicker">Schon erschienen</div><h2 class="serif">Mehr Spiele</h2><p class="lead" style="margin-bottom:44px">Frühere Spiele von uns – zum direkten Ausprobieren.</p></div>
-  <div class="grid">
-    <a class="tile reveal" href="https://shelterfall.minh.systems/" target="_blank" rel="noopener"><img src="img/shelterfall.webp" alt="" loading="lazy"><div><h4>Shelter Fall</h4><span>Endzeit-Strategie mit Ereignissen und wachsendem Überlebensdruck</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/NomadKitchenTycoon/" target="_blank" rel="noopener"><img src="img/nomadkitchen.webp" alt="" loading="lazy"><div><h4>Nomad Kitchen Tycoon</h4><span>Foodtruck-Management in zwei Städten</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/Ringjahr/" target="_blank" rel="noopener"><img src="img/ringjahr.webp" alt="" loading="lazy"><div><h4>Ringjahr</h4><span>Ruhiges Puzzle über Baumringe und Klima</span></div></a>
-  </div>
-</section>
-
-<section id="apps" class="apps">
-  <div class="reveal"><div class="kicker">Auch aus unserer Werkstatt</div><h2 class="serif">Apps</h2><p class="lead" style="margin-bottom:44px">Mit derselben Sorgfalt gebaut: kleine, private Werkzeuge für iPhone, iPad und Windows.</p></div>
-  <div class="grid">
-    <a class="tile reveal" href="https://minh.systems/ShotSift/" target="_blank" rel="noopener"><img src="img/shotsift.webp" alt="" loading="lazy"><div><h4>ShotSift</h4><span>Fotos aufräumen – Duplikate, Screenshots, Serien, alles auf dem Gerät</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/Rootling/" target="_blank" rel="noopener"><img src="img/rootling.webp" alt="" loading="lazy"><div><h4>Rootling</h4><span>Stecklinge bewurzeln mit Prognosen und Tagebuch</span></div></a>
-    <a class="tile reveal" href="https://mushbloom.minh.systems/" target="_blank" rel="noopener"><img src="img/mushbloom.webp" alt="" loading="lazy"><div><h4>Mushbloom</h4><span>Begleiter für die Pilzzucht</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/RidgeFocus/" target="_blank" rel="noopener"><img src="img/ridgefocus.webp" alt="" loading="lazy"><div><h4>RidgeFocus</h4><span>Pomodoro und konzentriertes Arbeiten</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/Folvane/" target="_blank" rel="noopener"><div><h4>Folvane</h4><span>Ordner vergleichen und abgleichen unter Windows – mit Vorschau und Rückgängig</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/Summgarten/" target="_blank" rel="noopener"><div><h4>Summgarten (Hum Garden)</h4><span>Website zum singenden Garten: Support und Datenschutz</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/LittleKeepings/" target="_blank" rel="noopener"><div><h4>Little Keepings</h4><span>Ruhiges Sortierrätsel mit 25 Rätseln</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/Monatsklar/" target="_blank" rel="noopener"><div><h4>Monatsklar</h4><span>Haushaltsbuch für Windows, offline und ohne Abo</span></div></a>
-    <a class="tile reveal" href="https://minh.systems/belegora/" target="_blank" rel="noopener"><div><h4>Belegora</h4><span>Belege und Garantiefristen an einem Ort, offline</span></div></a>
+<section id="ratgeber">
+  <div class="reveal"><div class="kicker">Hilfe &amp; Anleitungen</div><h2 class="serif">Ratgeber</h2><p class="lead" style="margin-bottom:44px">Kurze Anleitungen zu typischen Alltagsfragen – mit und ohne unsere Apps.</p></div>
+  <div class="guides reveal">
+    <div><h3>Ordnung &amp; Dateien</h3><ul>
+      <li><a href="https://minh.systems/Folvane/de/ordner-vergleichen-windows.html">Ordner unter Windows vergleichen</a></li>
+      <li><a href="https://minh.systems/Folvane/de/doppelte-dateien-finden.html">Doppelte Dateien finden</a></li>
+      <li><a href="https://minh.systems/Folvane/de/backup-pruefen.html">Backup prüfen</a></li>
+      <li><a href="https://minh.systems/Folvane/de/dateien-synchronisieren-ohne-loeschen.html">Dateien synchronisieren, ohne zu löschen</a></li></ul></div>
+    <div><h3>Haushaltsbuch</h3><ul>
+      <li><a href="https://minh.systems/Monatsklar/haushaltsbuch-ohne-abo.html">Haushaltsbuch ohne Abo</a></li>
+      <li><a href="https://minh.systems/Monatsklar/haushaltsbuch-windows-offline.html">Haushaltsbuch offline unter Windows</a></li>
+      <li><a href="https://minh.systems/Monatsklar/haushaltsbuch-csv-import.html">Kontoauszüge als CSV importieren</a></li></ul></div>
+    <div><h3>Spiele &amp; Kinder</h3><ul>
+      <li><a href="https://minh.systems/Cogwisp/zahnrad-raetsel-loesen-tipps.html">Zahnrad-Rätsel lösen: Tipps</a></li>
+      <li><a href="https://minh.systems/Cogwisp/entspannendes-puzzlespiel-windows-ohne-werbung.html">Entspannende Puzzlespiele ohne Werbung</a></li>
+      <li><a href="https://minh.systems/LittleKeepings/de/sortierspiel-ohne-zeitdruck.html">Sortierspiel ohne Zeitdruck</a></li>
+      <li><a href="https://minh.systems/Summgarten/musik-app-fuer-kinder/">Musik-App für Kinder</a></li>
+      <li><a href="https://minh.systems/Summgarten/kinder-zum-singen-bringen/">Kinder zum Singen bringen</a></li></ul></div>
   </div>
 </section>
 
@@ -374,11 +461,11 @@ footer a:hover{color:var(--paper)}
 
 <section id="kontakt" class="contact">
   <div class="reveal"><div class="kicker">Presse, Partner, Fans</div><h2 class="serif">Schreib uns.</h2><p class="lead" style="margin:0 auto 34px">Für Presseanfragen, Kooperationen oder einfach ein Hallo.</p>
-  <a class="mail" href="mailto:hello@minhnguyen.studio">hello@minhnguyen.studio</a></div>
+  <a class="mail" href="mailto:mip@gmx.biz">mip@gmx.biz</a></div>
 </section>
 </main>
 
-<footer><span>© <span id="yr"></span> Minh Nguyen Studios</span><span><a href="https://minh.systems/" target="_blank" rel="noopener">minh.systems</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span></footer>
+<footer><span>© <span id="yr"></span> Minh Nguyen Studios</span><span><a href="https://minh.systems/" target="_blank" rel="noopener">minh.systems</a><a href="https://minh.systems/impressum/">Impressum</a><a href="https://minh.systems/datenschutz/">Datenschutz</a></span></footer>
 
 <script>
 const R=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -570,9 +657,19 @@ document.querySelectorAll('.media').forEach(m=>{const f=m.querySelector('.frame'
   m.addEventListener('pointerleave',()=>f.style.transform='')});
 
 // Filter
-document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{
-  document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===ch));
+document.querySelectorAll('#wf .chip').forEach(ch=>ch.addEventListener('click',()=>{
+  document.querySelectorAll('#wf .chip').forEach(x=>x.classList.toggle('on',x===ch));
   document.querySelectorAll('.feature').forEach(a=>a.classList.toggle('hide',ch.dataset.f!=='all'&&a.dataset.cat!==ch.dataset.f))}));
+
+// Katalog-Filter
+document.querySelectorAll('#kat .chip').forEach(ch=>ch.addEventListener('click',()=>{
+  document.querySelectorAll('#kat .chip').forEach(x=>x.classList.toggle('on',x===ch));
+  document.querySelectorAll('#apps .group').forEach(g=>g.classList.toggle('hide',ch.dataset.k!=='all'&&g.dataset.k!==ch.dataset.k))}));
+
+// Hell/Dunkel
+document.getElementById('theme').addEventListener('click',()=>{const d=document.documentElement,
+  cur=d.dataset.theme||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'),t=cur==='light'?'dark':'light';
+  d.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}});
 
 // Reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});

@@ -1,31 +1,37 @@
 """Builds en/index.html from index.html. Edit the German page, then run: python3 tools/build_en.py
 Every source string must exist, so a changed German text fails loudly instead of leaving German in the English page."""
-import os
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import catalog
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://minh.systems/MinhNguyenStudios/"
 
 T = [
  # head
  ('<html lang="de">', '<html lang="en">'),
- ('content="Minh Nguyen Studios – unabhängiges Spielestudio aus Deutschland. Spiele für Kinder, Strategie und Geschichte."', 'content="Minh Nguyen Studios – an independent game studio from Germany. Games for kids, strategy and history."'),
- ('content="Unabhängiges Spielestudio aus Deutschland – liebevolle Spiele für Kinder und tiefe Strategie- und Geschichtsspiele."', 'content="An independent game studio from Germany – lovingly made games for kids and deep strategy and history games."'),
+ ('<title>Minh Nguyen Studios – Apps &amp; Spiele für Windows, iPhone und Mac</title>', '<title>Minh Nguyen Studios – Apps &amp; games for Windows, iPhone and Mac</title>'),
+ ('content="Unabhängiges Studio aus Deutschland: private Werkzeuge für Ordnung, Dateien und Belege, Lern-Apps, ruhige Spiele und Kinder-Apps für Windows, iPhone, iPad und Mac."', 'content="Independent studio from Germany: private tools for files, folders and receipts, learning apps, calm games and kids’ apps for Windows, iPhone, iPad and Mac."'),
+ ('content="Private Werkzeuge, ruhige Spiele und Kinder-Apps für Windows, iPhone, iPad und Mac – von einem unabhängigen Studio aus Deutschland."', 'content="Private tools, calm games and kids’ apps for Windows, iPhone, iPad and Mac – from an independent studio in Germany."'),
+ ('<meta property="og:title" content="Minh Nguyen Studios – Apps &amp; Spiele">', '<meta property="og:title" content="Minh Nguyen Studios – Apps &amp; games">'),
  (f'<meta property="og:url" content="{BASE}">', f'<meta property="og:url" content="{BASE}en/">'),
+ (f'<link rel="canonical" href="{BASE}">', f'<link rel="canonical" href="{BASE}en/">'),
  ('content="de_DE"', 'content="en_US"'),
  # nav
  ('<a class="lang" href="en/" hreflang="en" lang="en" title="English">EN</a>', '<a class="lang" href="../" hreflang="de" lang="de" title="Deutsch">DE</a>'),
  ('aria-label="Minh Nguyen Studios – Startseite"', 'aria-label="Minh Nguyen Studios – home"'),
- ('<li><a href="#spiele">Spiele</a></li><li><a href="#mehr">Mehr Spiele</a></li>', '<li><a href="#spiele">Games</a></li><li><a href="#mehr">More games</a></li>'),
+ ('<li><a href="#apps">Apps &amp; Spiele</a></li><li><a href="#spiele">Werkstatt</a></li><li><a href="#ratgeber">Ratgeber</a></li>', '<li><a href="#apps">Apps &amp; games</a></li><li><a href="#spiele">Workshop</a></li><li><a href="#ratgeber">Guides</a></li>'),
+ ('aria-label="Hell oder dunkel" title="Hell oder dunkel"', 'aria-label="Light or dark" title="Light or dark"'),
  ('<li><a href="#kontakt">Kontakt</a></li>', '<li><a href="#kontakt">Contact</a></li>'),
  ('title="Ton an/aus"', 'title="Sound on/off"'),
  ('<span id="sndl">Ton aus</span>', '<span id="sndl">Sound off</span>'),
  # hero
- ('Spiele, die man <em>weitererzählt.</em>', 'Games you can’t <em>stop retelling.</em>'),
- ('Ein unabhängiges Studio aus Deutschland. Wir bauen liebevolle Welten für die Kleinsten – und tiefe Strategie- und Geschichtsspiele für alle, die gern lange nachdenken.',
-  'An independent studio from Germany. We build loving worlds for the little ones – and deep strategy and history games for everyone who likes to think things through.'),
- ('>Unsere Spiele entdecken<', '>Discover our games<'),
+ ('Apps &amp; Spiele, die man <em>weitererzählt.</em>', 'Apps &amp; games you can’t <em>stop recommending.</em>'),
+ ('Ein unabhängiges Studio aus Deutschland. Wir bauen kleine, private Werkzeuge für Ordnung und Alltag, liebevolle Welten für die Kleinsten – und tiefe Strategiespiele für alle, die gern lange nachdenken.',
+  'An independent studio from Germany. We build small, private tools for tidying up and everyday life, loving worlds for the little ones – and deep strategy games for everyone who likes to think things through.'),
+ ('>Alle Apps &amp; Spiele<', '>All apps &amp; games<'),
  ('<a class="btn ghost" href="#kontakt">Kontakt</a>', '<a class="btn ghost" href="#kontakt">Contact</a>'),
  # featured
- ('<div class="kicker">Aktuelle Spiele</div><h2 class="serif">Sechs Welten aus unserer Werkstatt</h2>', '<div class="kicker">Current games</div><h2 class="serif">Six worlds from our workshop</h2>'),
+ ('<div class="kicker">Aus der Werkstatt</div><h2 class="serif">Acht Welten, an denen wir bauen</h2>', '<div class="kicker">From the workshop</div><h2 class="serif">Eight worlds we’re building</h2>'),
  ('Veröffentlicht, in der Prüfung oder mitten in der Produktion – das ist, woran wir gerade mit ganzem Herzen arbeiten.', 'Released, in review or deep in production – this is what we’re pouring our hearts into right now.'),
  ('>Alle</button>', '>All</button>'), ('>Für Kinder</button>', '>For kids</button>'), ('>Strategie &amp; Geschichte</button>', '>Strategy &amp; history</button>'),
  ('alt="Summgarten – der singende Garten mit Figuren auf den Beeten"', 'alt="Summgarten – the singing garden with creatures on the flower beds"'),
@@ -49,6 +55,7 @@ T = [
   'Bruno the beaver runs a workshop, and the village animals bring him their broken things. Your child figures out what fits by trying: fixing, cleaning, painting – no reading required and no way to fail.'),
  ('alt="Kontor – Hamburger Handelskontor um 1600"', 'alt="Kontor – a Hamburg trading house around 1600"'),
  ('<span class="status prod">In Vorbereitung</span>', '<span class="status prod">Coming soon</span>'),
+ ('href="https://minh.systems/KleinerReparierer/" target="_blank" rel="noopener">Zur Website →', 'href="https://minh.systems/KleinerReparierer/" target="_blank" rel="noopener">Visit the website →'),
  ('Wirtschafts- &amp; Strategiespiel · iPad, Mac, PC', 'Economic &amp; strategy game · iPad, Mac, PC'),
  ('Hamburg, 1600. Dein Siegel. Dein Risiko. Du führst ein Kontor und erfindest die Versicherung – handelst mit Gefahr und baust aus Briefen, Schiffslisten und Totenregistern deine eigene Statistik auf.',
   'Hamburg, 1600. Your seal. Your risk. You run a trading house and invent insurance – dealing in danger and building your own statistics from letters, ship lists and death registers.'),
@@ -61,26 +68,24 @@ T = [
  ('<span class="status prod">In Entwicklung</span>', '<span class="status prod">In development</span>'),
  ('Die Nachtschicht gehört dir. Führe einen kleinen IT-Security-Dienstleister aus dem Kellerbüro: Kunden gewinnen, Admins einteilen, Schutz kaufen – und entscheiden, wie viel Marge du opferst, bevor die nächste Phishing-Welle zuschlägt.',
   'The night shift is yours. Run a small IT security firm from a basement office: win clients, assign admins, buy protection – and decide how much margin to sacrifice before the next phishing wave hits.'),
- # more games
- ('<div class="kicker">Schon erschienen</div><h2 class="serif">Mehr Spiele</h2>', '<div class="kicker">Already out</div><h2 class="serif">More games</h2>'),
- ('Frühere Spiele von uns – zum direkten Ausprobieren.', 'Earlier games of ours – ready to play.'),
- ('Endzeit-Strategie mit Ereignissen und wachsendem Überlebensdruck', 'Post-apocalyptic strategy with events and rising survival pressure'),
- ('Foodtruck-Management in zwei Städten', 'Food truck management across two cities'),
- ('href="https://minh.systems/Ringjahr/"', 'href="https://minh.systems/Ringjahr/en/"'),
- ('Ruhiges Puzzle über Baumringe und Klima', 'A calm puzzle about tree rings and climate'),
- ('Leben als Bader-Chirurg im Jahr 1382 · im Browser', 'Life as a barber-surgeon in 1382 · in your browser'),
- # apps
- ('<div class="kicker">Auch aus unserer Werkstatt</div>', '<div class="kicker">Also from our workshop</div>'),
- ('Mit derselben Sorgfalt gebaut: kleine, private Werkzeuge für iPhone, iPad und Windows.', 'Built with the same care: small, private tools for iPhone, iPad and Windows.'),
- ('Fotos aufräumen – Duplikate, Screenshots, Serien, alles auf dem Gerät', 'Tidy your photos – duplicates, screenshots, bursts, all on-device'),
- ('Stecklinge bewurzeln mit Prognosen und Tagebuch', 'Root cuttings with forecasts and a journal'),
- ('Begleiter für die Pilzzucht', 'A companion for growing mushrooms'),
- ('Pomodoro und konzentriertes Arbeiten', 'Pomodoro and deep work'),
- ('Ordner vergleichen und abgleichen unter Windows – mit Vorschau und Rückgängig', 'Compare and sync folders on Windows – with preview and undo'),
- ('Website zum singenden Garten: Support und Datenschutz', 'Website of the singing garden: support and privacy'),
- ('Ruhiges Sortierrätsel mit 25 Rätseln', 'A calm sorting puzzle with 25 puzzles'),
- ('Haushaltsbuch für Windows, offline und ohne Abo', 'Household budget book for Windows, offline, no subscription'),
- ('Belege und Garantiefristen an einem Ort, offline', 'Receipts and warranty dates in one place, offline'),
+ # guides
+ ('<div class="kicker">Hilfe &amp; Anleitungen</div><h2 class="serif">Ratgeber</h2>', '<div class="kicker">Help &amp; how-tos</div><h2 class="serif">Guides</h2>'),
+ ('Kurze Anleitungen zu typischen Alltagsfragen – mit und ohne unsere Apps.', 'Short guides to everyday questions – with or without our apps. (Some in German.)'),
+ ('<h3>Ordnung &amp; Dateien</h3>', '<h3>Files &amp; folders</h3>'),
+ ('Folvane/de/ordner-vergleichen-windows.html">Ordner unter Windows vergleichen', 'Folvane/compare-folders-windows.html">Compare folders on Windows'),
+ ('Folvane/de/doppelte-dateien-finden.html">Doppelte Dateien finden', 'Folvane/find-duplicate-files-windows.html">Find duplicate files'),
+ ('Folvane/de/backup-pruefen.html">Backup prüfen', 'Folvane/check-backup.html">Check a backup'),
+ ('Folvane/de/dateien-synchronisieren-ohne-loeschen.html">Dateien synchronisieren, ohne zu löschen', 'Folvane/sync-folders-without-deleting.html">Sync folders without deleting'),
+ ('<h3>Haushaltsbuch</h3>', '<h3>Budget book (German)</h3>'),
+ ('>Haushaltsbuch ohne Abo<', '>Budget book without subscription<'),
+ ('>Haushaltsbuch offline unter Windows<', '>Offline budget book on Windows<'),
+ ('>Kontoauszüge als CSV importieren<', '>Import bank statements as CSV<'),
+ ('<h3>Spiele &amp; Kinder</h3>', '<h3>Games &amp; kids</h3>'),
+ ('>Zahnrad-Rätsel lösen: Tipps<', '>Solving gear puzzles: tips<'),
+ ('>Entspannende Puzzlespiele ohne Werbung<', '>Relaxing puzzle games without ads<'),
+ ('LittleKeepings/de/sortierspiel-ohne-zeitdruck.html">Sortierspiel ohne Zeitdruck', 'LittleKeepings/sorting-puzzle-no-timer.html">Sorting puzzle with no timer'),
+ ('Summgarten/musik-app-fuer-kinder/">Musik-App für Kinder', 'Summgarten/en/music-app-for-kids/">Music app for kids'),
+ ('Summgarten/kinder-zum-singen-bringen/">Kinder zum Singen bringen', 'Summgarten/en/get-kids-to-sing/">Getting kids to sing'),
  # studio
  ('<div class="kicker">Das Studio</div><h2 class="serif">Wofür wir stehen</h2>', '<div class="kicker">The studio</div><h2 class="serif">What we stand for</h2>'),
  ('Minh Nguyen Studios ist ein kleines, unabhängiges Studio. Wir machen weniger Spiele – und dafür jedes so, als wäre es das einzige.', 'Minh Nguyen Studios is a small, independent studio. We make fewer games – and make each one as if it were the only one.'),
@@ -91,7 +96,7 @@ T = [
  # contact + footer
  ('<div class="kicker">Presse, Partner, Fans</div><h2 class="serif">Schreib uns.</h2>', '<div class="kicker">Press, partners, fans</div><h2 class="serif">Write to us.</h2>'),
  ('Für Presseanfragen, Kooperationen oder einfach ein Hallo.', 'For press, partnerships or just to say hello.'),
- ('<a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a>', '<a href="../impressum.html" hreflang="de">Legal notice (DE)</a><a href="../datenschutz.html" hreflang="de">Privacy (DE)</a>'),
+ ('<a href="https://minh.systems/impressum/">Impressum</a><a href="https://minh.systems/datenschutz/">Datenschutz</a>', '<a href="https://minh.systems/impressum/" hreflang="de">Legal notice (DE)</a><a href="https://minh.systems/datenschutz/" hreflang="de">Privacy (DE)</a>'),
  # script strings
  ("sfx.on?'Ton an':'Ton aus'", "sfx.on?'Sound on':'Sound off'"),
  ("label:'Garten singen lassen',hint:'Tippe in den Garten – oben singt es hoch, unten tief'", "label:'Make the garden sing',hint:'Tap the garden – high notes up top, low notes below'"),
@@ -117,6 +122,7 @@ PATHS = [('src="img/', 'src="../img/'), ('src="brand/', 'src="../brand/'), ('hre
          ('href="fonts.css"', 'href="../fonts.css"'), ('data-video="video/', 'data-video="../video/')]
 
 s = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+s = catalog.BLOCK.sub(lambda m: catalog.render("en"), s)
 missing = [de for de, _ in T if de not in s]
 if missing:
     raise SystemExit("German source strings not found (update tools/build_en.py):\n- " + "\n- ".join(m[:90] for m in missing))
