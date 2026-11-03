@@ -19,7 +19,7 @@ T = [
  # nav
  ('<a class="lang" href="en/" hreflang="en" lang="en" title="English">EN</a>', '<a class="lang" href="../" hreflang="de" lang="de" title="Deutsch">DE</a>'),
  ('aria-label="Minh Nguyen Studios – Startseite"', 'aria-label="Minh Nguyen Studios – home"'),
- ('<li><a href="#apps">Apps &amp; Spiele</a></li><li><a href="#spiele">Werkstatt</a></li><li><a href="#ratgeber">Ratgeber</a></li>', '<li><a href="#apps">Apps &amp; games</a></li><li><a href="#spiele">Workshop</a></li><li><a href="#ratgeber">Guides</a></li>'),
+ ('<li><a href="#spiele">Werkstatt</a></li><li><a href="#apps">Apps &amp; Spiele</a></li><li><a href="#ratgeber">Ratgeber</a></li>', '<li><a href="#spiele">Workshop</a></li><li><a href="#apps">Apps &amp; games</a></li><li><a href="#ratgeber">Guides</a></li>'),
  ('aria-label="Hell oder dunkel" title="Hell oder dunkel"', 'aria-label="Light or dark" title="Light or dark"'),
  ('<li><a href="#kontakt">Kontakt</a></li>', '<li><a href="#kontakt">Contact</a></li>'),
  ('title="Ton an/aus"', 'title="Sound on/off"'),
@@ -28,8 +28,8 @@ T = [
  ('Apps &amp; Spiele, die man <em>weitererzählt.</em>', 'Apps &amp; games you can’t <em>stop recommending.</em>'),
  ('Ein unabhängiges Studio aus Deutschland. Wir bauen kleine, private Werkzeuge für Ordnung und Alltag, liebevolle Welten für die Kleinsten – und tiefe Strategiespiele für alle, die gern lange nachdenken.',
   'An independent studio from Germany. We build small, private tools for tidying up and everyday life, loving worlds for the little ones – and deep strategy games for everyone who likes to think things through.'),
+ ('>Neue Spiele ansehen<', '>See our new games<'),
  ('>Alle Apps &amp; Spiele<', '>All apps &amp; games<'),
- ('<a class="btn ghost" href="#kontakt">Kontakt</a>', '<a class="btn ghost" href="#kontakt">Contact</a>'),
  # featured
  ('<div class="kicker">Aus der Werkstatt</div><h2 class="serif">Acht Welten, an denen wir bauen</h2>', '<div class="kicker">From the workshop</div><h2 class="serif">Eight worlds we’re building</h2>'),
  ('Veröffentlicht, in der Prüfung oder mitten in der Produktion – das ist, woran wir gerade mit ganzem Herzen arbeiten.', 'Released, in review or deep in production – this is what we’re pouring our hearts into right now.'),
