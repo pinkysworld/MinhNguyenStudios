@@ -52,7 +52,7 @@ APPS = [
   "Stecklinge bewurzeln – mit Prognosen und Pflanzentagebuch.", "Root cuttings – with forecasts and a plant journal."),
  ("mushbloom", "MushBloom", "lernen", ["iPhone"], True, "https://mushbloom.minh.systems/", [("apple", APPLE+"6758917023")],
   "Begleiter für die Pilzzucht zu Hause.", "A companion for growing mushrooms at home."),
- ("horsehold", "Horsehold", "lernen", ["iPhone"], True, None, [("apple", APPLE+"6826688753")],
+ ("horsehold", "Horsehold", "lernen", ["iPhone"], True, S+"Stable/", [("apple", APPLE+"6826688753")],
   "Stallbuch fürs Pferd: Pflege, Termine und Dokumente.", "A stable book for your horse: care, appointments and documents."),
  ("summgarten", "Summgarten", "kinder", ["iPhone", "Mac", "Windows"], True, S+"Summgarten/", [("apple", APPLE+"6824160993"), ("ms", MS+"9PGTW423BB1H")],
   "Singender Garten für Kinder ab 3 – im Microsoft Store als Hum Garden.", "A singing garden for kids 3+ – called Hum Garden in the Microsoft Store."),
