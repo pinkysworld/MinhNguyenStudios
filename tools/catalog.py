@@ -74,7 +74,7 @@ APPS = [
   "Stallbuch fürs Pferd: Pflege, Termine und Dokumente.", "A stable book for your horse: care, appointments and documents."),
  ("summgarten", "Summgarten", "kinder", ["iPhone", "Mac", "Windows", "Android (bald)"], True, S+"Summgarten/", [("apple", APPLE+"6824160993"), ("ms", MS+"9PGTW423BB1H")],
   "Singender Garten für Kinder ab 3 – im Microsoft Store als Hum Garden.", "A singing garden for kids 3+ – called Hum Garden in the Microsoft Store."),
- ("reparierer", "Kleiner Reparierer", "kinder", ["iPhone", "Android (bald)"], False, S+"KleinerReparierer/", [],
+ ("reparierer", "Kleiner Reparierer", "kinder", ["Windows", "iPhone (bald)", "Android (bald)"], True, S+"KleinerReparierer/", [("ms", MS+"9N71QS2JNCVW")],
   "Mit Biber Bruno reparieren, putzen und anmalen – ohne Texte, ohne Scheitern.", "Fix, scrub and paint with Bruno the beaver – no reading, no failing."),
 ]
 
@@ -88,7 +88,7 @@ L = {
             lead="Small, private tools and calm games for Windows, iPhone, iPad and Mac – no account, mostly offline.",
             filter="Filter by category"),
 }
-PF = {"de": {"iPhone": "iPhone &amp; iPad"}, "en": {"iPhone": "iPhone &amp; iPad", "Android (bald)": "Android (soon)"}}
+PF = {"de": {"iPhone": "iPhone &amp; iPad", "iPhone (bald)": "iPhone &amp; iPad (bald)"}, "en": {"iPhone": "iPhone &amp; iPad", "Android (bald)": "Android (soon)", "iPhone (bald)": "iPhone &amp; iPad (soon)"}}
 
 
 def badge(kind, lang):
