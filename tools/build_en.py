@@ -31,16 +31,17 @@ T = [
  ('>Neue Spiele ansehen<', '>See our new games<'),
  ('>Alle Apps &amp; Spiele<', '>All apps &amp; games<'),
  # featured
- ('<div class="kicker">Aus der Werkstatt</div><h2 class="serif">Acht Welten, an denen wir bauen</h2>', '<div class="kicker">From the workshop</div><h2 class="serif">Eight worlds we’re building</h2>'),
+ ('<div class="kicker">Aus der Werkstatt</div><h2 class="serif">Zehn Welten, an denen wir bauen</h2>', '<div class="kicker">From the workshop</div><h2 class="serif">Ten worlds we’re building</h2>'),
  ('Veröffentlicht, in der Prüfung oder mitten in der Produktion – das ist, woran wir gerade mit ganzem Herzen arbeiten.', 'Released, in review or deep in production – this is what we’re pouring our hearts into right now.'),
  ('>Alle</button>', '>All</button>'), ('>Für Kinder</button>', '>For kids</button>'), ('>Strategie &amp; Geschichte</button>', '>Strategy &amp; history</button>'),
  ('alt="Summgarten – der singende Garten mit Figuren auf den Beeten"', 'alt="Summgarten – the singing garden with creatures on the flower beds"'),
  ('Singender Garten · iPhone, iPad, Mac &amp; Windows · ab 3 Jahren', 'Singing garden · iPhone, iPad, Mac &amp; Windows · ages 3+'),
  ('<span class="status">Im App Store &amp; Microsoft Store</span>', '<span class="status">On the App Store &amp; Microsoft Store</span>'),
- ('>Im Microsoft Store laden<', '>Get it from Microsoft<'),
+ ('<img src="brand/badges/app-store-de.svg" alt="Laden im App Store"', '<img src="brand/badges/app-store-en.svg" alt="Download on the App Store"'),
+ ('<img src="https://get.microsoft.com/images/de%20dark.svg" alt="Download im Microsoft Store" width="183"', '<img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft" width="161"'),
+ ('Apple, das Apple-Logo und App Store sind Marken der Apple Inc., eingetragen in den USA und anderen Ländern. Microsoft und das Microsoft-Logo sind Marken der Microsoft-Unternehmensgruppe.', 'Apple, the Apple logo and App Store are trademarks of Apple Inc., registered in the U.S. and other countries. Microsoft and the Microsoft logo are trademarks of the Microsoft group of companies.'),
  ('Die Stimme deines Kindes wird zum Samen: Jedes aufgenommene Geräusch lässt eine Pflanze oder ein Tierchen wachsen, das den Klang im Takt vorsingt – bis ein kleines Orchester entsteht. Ohne Werbung, ohne In-App-Käufe, ohne Datensammeln.',
   'Your child’s voice becomes a seed: every recorded sound grows a plant or a little creature that sings it back in rhythm – until a tiny orchestra appears. No ads, no in-app purchases, no data collection.'),
- ('>Im App Store laden<', '>Download on the App Store<'),
  ('alt="Gute Nacht, Spielzeug – Spielzeug im Kinderzimmer am Abend"', 'alt="Good Night, Toys – toys in a child’s room in the evening"'),
  ('<span class="status review">Bald im App Store</span>', '<span class="status review">Coming to the App Store</span>'),
  ('<h3 class="serif">Gute Nacht, Spielzeug</h3>', '<h3 class="serif">Good Night, Toys</h3>'),
@@ -68,6 +69,10 @@ T = [
  ('<span class="status prod">In Entwicklung</span>', '<span class="status prod">In development</span>'),
  ('Die Nachtschicht gehört dir. Führe einen kleinen IT-Security-Dienstleister aus dem Kellerbüro: Kunden gewinnen, Admins einteilen, Schutz kaufen – und entscheiden, wie viel Marge du opferst, bevor die nächste Phishing-Welle zuschlägt.',
   'The night shift is yours. Run a small IT security firm from a basement office: win clients, assign admins, buy protection – and decide how much margin to sacrifice before the next phishing wave hits.'),
+ ('<small>(Arbeitstitel)</small>', '<small>(working title)</small>'),
+ ('Insel-Aufbauspiel gegen die steigende Flut: Deiche und Schleusen bauen, Gebäude verlegen, Bewohner rechtzeitig per Fähre evakuieren.', 'An island builder against the rising tide: build dikes and locks, move buildings and evacuate residents by ferry in time.'),
+ ('<span class="st soon">In Entwicklung</span>', '<span class="st soon">In development</span>'),
+ ('Satirischer Klinik-Aufbau: Eine Luxus-Privatklinik voller absurder Abteilungen, in der du Reichen teure Leiden erfindest und Prüfer und Anwälte hinhältst.', 'A satirical clinic builder: a luxury private clinic full of absurd departments, where you invent costly ailments for the rich and stall inspectors and lawyers.'),
  # guides
  ('<div class="kicker">Hilfe &amp; Anleitungen</div><h2 class="serif">Ratgeber</h2>', '<div class="kicker">Help &amp; how-tos</div><h2 class="serif">Guides</h2>'),
  ('Kurze Anleitungen zu typischen Alltagsfragen – mit und ohne unsere Apps.', 'Short guides to everyday questions – with or without our apps. (Some in German.)'),
@@ -118,7 +123,7 @@ T = [
  ("' · 🔈 mit Ton schöner'", "' · 🔈 better with sound'"),
 ]
 
-PATHS = [('src="img/', 'src="../img/'), ('src="brand/', 'src="../brand/'), ('href="brand/', 'href="../brand/'),
+PATHS = [('src="brand/badges/', 'src="../brand/badges/'), ('src="img/', 'src="../img/'), ('src="brand/', 'src="../brand/'), ('href="brand/', 'href="../brand/'),
          ('href="fonts.css"', 'href="../fonts.css"'), ('data-video="video/', 'data-video="../video/')]
 
 s = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
