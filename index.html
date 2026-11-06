@@ -63,7 +63,7 @@ nav ul a,.snd{white-space:nowrap}
 .intro{display:flex;justify-content:center;align-items:baseline;font-family:Inter,sans-serif;font-weight:600;font-size:clamp(1.5rem,3.8vw,2.3rem);letter-spacing:-.025em;margin:22px 0 6px;min-height:1.3em;white-space:nowrap}
 .w-a,.w-n{color:var(--paper)}
 .w-n{display:inline-block;max-width:0;overflow:hidden;vertical-align:baseline;opacity:0;transition:max-width .9s cubic-bezier(.6,0,.2,1),opacity .6s}
-.intro.wide .w-n{max-width:6em}
+.intro.wide .w-n{max-width:6em;opacity:1}
 .w-b{color:var(--paper)}
 .dot{position:relative;display:inline-block;width:.42em;height:.5em;margin:0 .04em;opacity:0;transition:opacity .2s}
 .dot.on{opacity:1}
@@ -191,7 +191,7 @@ footer a:hover{color:var(--paper)}
 .banner{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(.6);opacity:0;padding:14px 24px;border-radius:18px;background:#0e1312e6;border:1px solid var(--bronze);color:var(--paper);font:500 1.15rem Fraunces,Georgia,serif;text-align:center;pointer-events:none;transition:all .5s cubic-bezier(.2,1.6,.4,1)}
 .banner.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .note{position:absolute;font-size:28px;pointer-events:none;animation:note 1.8s ease-out forwards;text-shadow:0 2px 8px #0006}
-@keyframes note{from{transform:translate(-50%,-50%) scale(.4)}to{transform:translate(calc(-50% + var(--dx)),-160%) scale(1.3) rotate(var(--r));opacity:0}}
+@keyframes note{from{transform:translate(-50%,-50%) scale(.4);opacity:1}to{transform:translate(calc(-50% + var(--dx)),-160%) scale(1.3) rotate(var(--r));opacity:0}}
 .night{position:absolute;inset:0;background:radial-gradient(circle at 80% 18%,#2b3b6a55,#0a1030e6 60%);opacity:0;transition:opacity 1.6s}
 .frame.play .night.on{opacity:1}
 .moon{position:absolute;right:9%;top:9%;width:54px;height:54px;border-radius:50%;box-shadow:-12px 6px 0 0 #fff3c4;transform:rotate(-20deg);filter:drop-shadow(0 0 14px #fff3c488);opacity:0;transition:opacity 1.6s .6s}
@@ -205,7 +205,7 @@ footer a:hover{color:var(--paper)}
 @keyframes wob{50%{transform:rotate(-14deg) scale(1.06)}}
 .seal{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:47% 53% 50% 50%;background:radial-gradient(circle at 38% 32%,#c4473a,#8e231b 70%);box-shadow:0 6px 16px #0008,inset 0 -4px 8px #0005,inset 0 4px 6px #ffffff33;display:grid;place-items:center;color:#f1c9a5;font:600 30px Fraunces,Georgia,serif;animation:stamp .45s cubic-bezier(.3,1.6,.5,1) both}
 .seal::after{content:"";position:absolute;inset:9px;border-radius:50%;border:2px solid #f1c9a555}
-@keyframes stamp{from{transform:scale(2.4) rotate(-25deg);opacity:0}to{transform:scale(1) rotate(var(--r,0deg))}}
+@keyframes stamp{from{transform:scale(2.4) rotate(-25deg);opacity:0}to{transform:scale(1) rotate(var(--r,0deg));opacity:1}}
 .alert{position:absolute;padding:7px 12px;border-radius:10px;background:#ff806e;color:#2a0b06;font:700 .8rem Inter,sans-serif;box-shadow:0 0 24px #ff806e99;cursor:pointer;transform:translate(-50%,-50%);animation:pop .35s cubic-bezier(.3,1.7,.5,1) both,pulse 1s .35s ease-in-out infinite;white-space:nowrap}
 .alert.ok{background:#59e5b1;box-shadow:0 0 24px #59e5b199;color:#06291c;animation:none;transition:opacity .6s .5s;opacity:0}
 .alert.miss{animation:none;opacity:0;transition:opacity .4s;filter:grayscale(1)}
