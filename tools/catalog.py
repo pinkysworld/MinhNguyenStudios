@@ -1,12 +1,13 @@
 """App- und Spielekatalog – eine Datenquelle für DE und EN.
 python3 tools/catalog.py schreibt den deutschen Block in index.html (zwischen den katalog-Markern);
 tools/build_en.py ersetzt ihn beim Bauen der englischen Seite durch render("en").
-Store-Links nur eintragen, wenn die Store-Seite live ist (geprüft 06.11.2026)."""
+Store-Links nur eintragen, wenn die Store-Seite live ist (Google Play geprüft 07.11.2026)."""
 import os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 S = "https://minh.systems/"
 APPLE = "https://apps.apple.com/app/id"
 MS = "https://apps.microsoft.com/detail/"
+PLAY = "https://play.google.com/store/apps/details?id="
 
 CATS = [
  ("spiele", "Spiele", "Games"),
@@ -22,7 +23,7 @@ NOTE = {"finanzen": ("Zum Erfassen und Ordnen – keine Finanz- oder Steuerberat
 APPS = [
  ("shelterfall", "Shelter Fall", "spiele", ["iPhone"], True, "https://shelterfall.minh.systems/", [("apple", APPLE+"6759238842")],
   "Endzeit-Strategie mit Ereignissen und wachsendem Überlebensdruck.", "Post-apocalyptic strategy with events and rising survival pressure."),
- ("nomad", "Nomad Kitchen Tycoon", "spiele", ["iPhone", "Android (bald)"], True, S+"NomadKitchenTycoon/", [("apple", APPLE+"6759504817")],
+ ("nomad", "Nomad Kitchen Tycoon", "spiele", ["iPhone", "Android"], True, S+"NomadKitchenTycoon/", [("apple", APPLE+"6759504817"), ("play", PLAY+"com.minhstudios.nomadkitchen")],
   "Foodtruck-Management in zwei Städten.", "Food truck management across two cities."),
  ("ringjahr", "Ringjahr", "spiele", ["iPhone"], False, S+"Ringjahr/", [],
   "Ruhiges Puzzle über Baumringe und Klima.", "A calm puzzle about tree rings and climate."),
@@ -72,7 +73,7 @@ APPS = [
   "Begleiter für die Pilzzucht zu Hause.", "A companion for growing mushrooms at home."),
  ("horsehold", "Horsehold", "lernen", ["iPhone"], True, S+"Stable/", [("apple", APPLE+"6826688753")],
   "Stallbuch fürs Pferd: Pflege, Termine und Dokumente.", "A stable book for your horse: care, appointments and documents."),
- ("summgarten", "Summgarten", "kinder", ["iPhone", "Mac", "Windows", "Android (bald)"], True, S+"Summgarten/", [("apple", APPLE+"6824160993"), ("ms", MS+"9PGTW423BB1H")],
+ ("summgarten", "Summgarten", "kinder", ["iPhone", "Mac", "Windows", "Android"], True, S+"Summgarten/", [("apple", APPLE+"6824160993"), ("ms", MS+"9PGTW423BB1H"), ("play", PLAY+"de.michelnguyen.klanggarten")],
   "Singender Garten für Kinder ab 3 – im Microsoft Store als Hum Garden.", "A singing garden for kids 3+ – called Hum Garden in the Microsoft Store."),
  ("reparierer", "Kleiner Reparierer", "kinder", ["Windows", "iPhone (bald)", "Android (bald)"], True, S+"KleinerReparierer/", [("ms", MS+"9N71QS2JNCVW")],
   "Mit Biber Bruno reparieren, putzen und anmalen – ohne Texte, ohne Scheitern.", "Fix, scrub and paint with Bruno the beaver – no reading, no failing."),
@@ -81,17 +82,21 @@ APPS = [
 L = {
  "de": dict(all="Alle", ok="Verfügbar", soon="Demnächst", ms="Microsoft Store", apple="App Store", site="Website",
             kicker="Alles aus unserer Werkstatt", h2="Apps &amp; Spiele",
-            lead="Kleine, private Werkzeuge und ruhige Spiele für Windows, iPhone, iPad und Mac – ohne Konto, meist offline.",
+            lead="Kleine, private Werkzeuge und ruhige Spiele für Windows, iPhone, iPad, Android und Mac – ohne Konto, meist offline.",
             filter="Nach Bereich filtern"),
  "en": dict(all="All", ok="Available", soon="Coming soon", ms="Microsoft Store", apple="App Store", site="Website",
             kicker="Everything from our workshop", h2="Apps &amp; games",
-            lead="Small, private tools and calm games for Windows, iPhone, iPad and Mac – no account, mostly offline.",
+            lead="Small, private tools and calm games for Windows, iPhone, iPad, Android and Mac – no account, mostly offline.",
             filter="Filter by category"),
 }
 PF = {"de": {"iPhone": "iPhone &amp; iPad", "iPhone (bald)": "iPhone &amp; iPad (bald)"}, "en": {"iPhone": "iPhone &amp; iPad", "Android (bald)": "Android (soon)", "iPhone (bald)": "iPhone &amp; iPad (soon)"}}
 
 
 def badge(kind, lang):
+    if kind == "play":
+        # Aktuelle, unveränderte Grafik aus Googles Partner Marketing Hub; mindestens so hoch wie die übrigen Badges.
+        alt = {"de": "Jetzt bei Google Play", "en": "Get it on Google Play"}[lang]
+        return f'<img src="brand/badges/google-play-{lang}.svg" alt="{alt}" width="148" height="44" loading="lazy">'
     if kind == "apple":
         src, w, alt = f"brand/badges/app-store-{lang}.svg", 132, {"de": "Laden im App Store", "en": "Download on the App Store"}[lang]
     else:
@@ -109,7 +114,7 @@ def card(a, lang):
     badges = "".join(f'<span class="pf">{PF[lang].get(p, p)}</span>' for p in pfs)
     st = f'<span class="st ok">{t["ok"]}</span>' if ok else f'<span class="st soon">{t["soon"]}</span>'
     # Apple zuerst, Grafiken unverändert (Regeln: README). Microsoft-Badge bleibt bei Microsoft gehostet.
-    go = "".join(f'<a class="badge" href="{u}" target="_blank" rel="noopener">{badge(k, lang)}</a>' for k, u in stores)
+    go = "".join(f'<a class="badge" href="{u + "&amp;hl=" + lang if k == "play" else u}" target="_blank" rel="noopener">{badge(k, lang)}</a>' for k, u in stores)
     if site:
         go += f'<a class="more" href="{site}">{t["site"]} →</a>'
     ico = f'<img class="ico" src="img/icons/{key}.webp" alt="" width="56" height="56" loading="lazy">' if os.path.exists(os.path.join(ROOT, "img/icons", key + ".webp")) else f'<span class="ico mono" aria-hidden="true">{name[0]}</span>'
