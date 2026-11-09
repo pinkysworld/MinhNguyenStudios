@@ -46,11 +46,12 @@ Geprüft wurde nur öffentlich Erreichbares. Ein Store-Badge steht auf der Seite
 | Gute Nacht, Spielzeug | App Store | ASC: abgelehnt; nicht öffentlich |
 | NightTalk | App Store | ASC: vom Entwickler zurückgezogen |
 | Ringjahr, Signal Lost, Kontor, Breach Inc. | App Store | ASC: in Vorbereitung |
-| Ablagefuchs, Fotokehr, E-Rechnung Viewer, Tenfingo | Microsoft Store | in der Store-Suche nicht gefunden |
+| Ablagefuchs, SafeSort Photos (früher Fotokehr), E-Rechnung Viewer, Tenfingo | Microsoft Store | in der Store-Suche nicht gefunden |
 | Germ Theory, Brinehold, Maladoro, Sovereign Rig, Lancet & Linen | Steam/PC | keine Store-Links bekannt |
 
 ## Korrigierte Links
 
+- Fotokehr heißt jetzt SafeSort Photos; `https://minh.systems/SafeSort-Photos/` ist erreichbar (200) und verlinkt.
 - `https://minh.systems/Ablagefuchs/` und `https://minh.systems/Fotokehr/` liefern 404 → Website-Link entfernt, bis die Seiten online sind.
 - Tastenflink heißt auf der Produktseite Tenfingo → Name angepasst, Link auf `https://minh.systems/Tenfingo/` ergänzt.
 

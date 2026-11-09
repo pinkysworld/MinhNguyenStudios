@@ -39,7 +39,7 @@ APPS = [
   "Findet zu lange Pfade und ungültige Namen, bevor du nach OneDrive oder SharePoint synchronisierst.", "Finds overly long paths and invalid names before you sync to OneDrive or SharePoint."),
  ("ablagefuchs", "Ablagefuchs", "ordnung", ["Windows"], False, None, [],
   "Verträge, Rechnungen und Schreiben an einem Ort – mit Texterkennung und Fristen, offline.", "Contracts, invoices and letters in one place – with text recognition and deadlines, offline."),
- ("fotokehr", "Fotokehr", "ordnung", ["Windows"], False, None, [],
+ ("fotokehr", "SafeSort Photos", "ordnung", ["Windows"], False, S+"SafeSort-Photos/", [],
   "Fotos und Videos lokal nach Datum sortieren – Originale bleiben unverändert.", "Sort photos and videos by date, locally – originals stay untouched."),
  ("plauderbuch", "Chatbound", "ordnung", ["Windows"], True, S+"Chatbound/", [("ms", MS+"9PJV28CQJV8K")],
   "Exportierte Chats durchsuchen, zusammenführen und als Buch-PDF setzen – lokal, ohne Konto.", "Search and merge exported chats and set them as a book PDF – local, no account."),
