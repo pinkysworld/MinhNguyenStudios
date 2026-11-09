@@ -16,6 +16,9 @@ T = [
  (f'<meta property="og:url" content="{BASE}">', f'<meta property="og:url" content="{BASE}en/">'),
  (f'<link rel="canonical" href="{BASE}">', f'<link rel="canonical" href="{BASE}en/">'),
  ('content="de_DE"', 'content="en_US"'),
+ ('og:locale:alternate" content="en_US"', 'og:locale:alternate" content="de_DE"'),
+ ('<meta name="twitter:title" content="Minh Nguyen Studios – Apps &amp; Spiele">', '<meta name="twitter:title" content="Minh Nguyen Studios – Apps &amp; games">'),
+ ('>Zum Inhalt springen</a>', '>Skip to content</a>'),
  # nav
  ('<a class="lang" href="en/" hreflang="en" lang="en" title="English">EN</a>', '<a class="lang" href="../" hreflang="de" lang="de" title="Deutsch">DE</a>'),
  ('aria-label="Minh Nguyen Studios – Startseite"', 'aria-label="Minh Nguyen Studios – home"'),
@@ -131,7 +134,7 @@ T = [
 ]
 
 PATHS = [('src="brand/badges/', 'src="../brand/badges/'), ('src="img/', 'src="../img/'), ('src="brand/', 'src="../brand/'), ('href="brand/', 'href="../brand/'),
-         ('href="fonts.css"', 'href="../fonts.css"'), ('data-video="video/', 'data-video="../video/')]
+         ('href="fonts.css"', 'href="../fonts.css"'), ('href="fonts/', 'href="../fonts/'), ('data-video="video/', 'data-video="../video/')]
 
 s = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
 s = catalog.BLOCK.sub(lambda m: catalog.render("en"), s)

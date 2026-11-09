@@ -10,3 +10,4 @@ Statische Seite (GitHub Pages), Test-URL: https://minh.systems/MinhNguyenStudios
 - Store-Badges: nur für live veröffentlichte Apps, Grafik nie ändern, Apple zuerst, Höhe 44 px, mindestens 11 px Abstand. Apple-SVGs unverändert aus dem Apple-Marketing-Toolbox; Microsoft-Badge von get.microsoft.com eingebunden.
 - Logo/CI-Quellen: `~/Developer/Logo/final/`.
 - Beim Umzug auf minhnguyen.studio: `CNAME` anlegen und `https://minh.systems/MinhNguyenStudios/` in den Meta-Tags ersetzen.
+- Live-Status aller Titel und Prüfweg: `docs/LIVE_STATUS.md` (Stand 09.11.2026). Vor neuen Badges dort nachprüfen und ergänzen.

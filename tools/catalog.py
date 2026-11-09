@@ -1,7 +1,7 @@
 """App- und Spielekatalog – eine Datenquelle für DE und EN.
 python3 tools/catalog.py schreibt den deutschen Block in index.html (zwischen den katalog-Markern);
 tools/build_en.py ersetzt ihn beim Bauen der englischen Seite durch render("en").
-Store-Links nur eintragen, wenn die Store-Seite live ist (Google Play geprüft 07.11.2026)."""
+Store-Links nur eintragen, wenn die Store-Seite live ist (alle Stores geprüft 09.11.2026, siehe docs/LIVE_STATUS.md)."""
 import os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 S = "https://minh.systems/"
@@ -37,9 +37,9 @@ APPS = [
   "Ordner vergleichen, synchronisieren und Backups prüfen – mit Vorschau und Rückgängig.", "Compare and sync folders and check backups – with preview and undo."),
  ("pathrova", "Pathrova", "ordnung", ["Windows"], True, S+"Pathrova/", [("ms", MS+"9NJN21Z01WPM")],
   "Findet zu lange Pfade und ungültige Namen, bevor du nach OneDrive oder SharePoint synchronisierst.", "Finds overly long paths and invalid names before you sync to OneDrive or SharePoint."),
- ("ablagefuchs", "Ablagefuchs", "ordnung", ["Windows"], False, S+"Ablagefuchs/", [],
+ ("ablagefuchs", "Ablagefuchs", "ordnung", ["Windows"], False, None, [],
   "Verträge, Rechnungen und Schreiben an einem Ort – mit Texterkennung und Fristen, offline.", "Contracts, invoices and letters in one place – with text recognition and deadlines, offline."),
- ("fotokehr", "Fotokehr", "ordnung", ["Windows"], False, S+"Fotokehr/", [],
+ ("fotokehr", "Fotokehr", "ordnung", ["Windows"], False, None, [],
   "Fotos und Videos lokal nach Datum sortieren – Originale bleiben unverändert.", "Sort photos and videos by date, locally – originals stay untouched."),
  ("plauderbuch", "Chatbound", "ordnung", ["Windows"], True, S+"Chatbound/", [("ms", MS+"9PJV28CQJV8K")],
   "Exportierte Chats durchsuchen, zusammenführen und als Buch-PDF setzen – lokal, ohne Konto.", "Search and merge exported chats and set them as a book PDF – local, no account."),
@@ -55,9 +55,9 @@ APPS = [
   "Haushaltsbuch für Windows – offline und ohne Abo.", "Household budget book for Windows – offline, no subscription."),
  ("belegora", "Belegora", "finanzen", ["Windows"], True, S+"belegora/", [("ms", MS+"9NB7QSNC6MJQ")],
   "Belege, Geräte und Garantiefristen an einem Ort, offline.", "Receipts, devices and warranty dates in one place, offline."),
- ("tastenflink", "Tastenflink", "lernen", ["Windows"], False, None, [],
+ ("tastenflink", "Tenfingo", "lernen", ["Windows"], False, S+"Tenfingo/", [],
   "Zehnfingerschreiben lernen – Schritt für Schritt, ohne Konto.", "Learn to touch-type – step by step, no account."),
- ("speakanchor", "SpeakAnchor", "lernen", ["Windows"], False, S+"SpeakAnchor/", [],
+ ("speakanchor", "SpeakAnchor", "lernen", ["Windows"], True, S+"SpeakAnchor/", [("ms", MS+"9PF13FM93XSJ")],
   "Teleprompter mit Redner-Timer, beim Teilen in Teams, Zoom und OBS nicht zu sehen.", "Teleprompter with speaker timer, not visible when sharing in Teams, Zoom or OBS."),
  ("vietnamese", "Chào nhà", "lernen", ["Browser"], True, S+"VietnameseTrainer/", [],
   "Freundlicher Browser-Trainer für vietnamesischen Alltag.", "A friendly browser trainer for everyday Vietnamese."),
@@ -125,8 +125,8 @@ def card(a, lang):
 
 def render(lang):
     t = L[lang]
-    chips = f'<button class="chip on" data-k="all">{t["all"]}</button>' + "".join(
-        f'<button class="chip" data-k="{k}">{de if lang == "de" else en}</button>' for k, de, en in CATS)
+    chips = f'<button class="chip on" data-k="all" aria-pressed="true">{t["all"]}</button>' + "".join(
+        f'<button class="chip" data-k="{k}" aria-pressed="false">{de if lang == "de" else en}</button>' for k, de, en in CATS)
     out = [f'<!-- katalog:start -->\n<section id="apps">\n  <div class="head"><div class="reveal"><div class="kicker">{t["kicker"]}</div>'
            f'<h2 class="serif">{t["h2"]}</h2><p class="lead">{t["lead"]}</p></div>\n'
            f'  <div class="chips reveal" id="kat" role="group" aria-label="{t["filter"]}">{chips}</div></div>']
