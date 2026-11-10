@@ -83,13 +83,16 @@ L = {
  "de": dict(all="Alle", ok="Verfügbar", soon="In Arbeit", ms="Microsoft Store", apple="App Store", site="Website",
             kicker="Alles aus unserer Werkstatt", h2="Apps &amp; Spiele",
             lead="Kleine, private Werkzeuge und ruhige Spiele für Windows, iPhone, iPad, Android und Mac – ohne Konto, meist offline.",
-            filter="Nach Bereich filtern"),
+            filter="Nach Bereich filtern", pfilter="Nach Gerät filtern", pfall="Alle Geräte",
+            none="Für diese Auswahl gibt es noch nichts."),
  "en": dict(all="All", ok="Available", soon="In the works", ms="Microsoft Store", apple="App Store", site="Website",
             kicker="Everything from our workshop", h2="Apps &amp; games",
             lead="Small, private tools and calm games for Windows, iPhone, iPad, Android and Mac – no account, mostly offline.",
-            filter="Filter by category"),
+            filter="Filter by category", pfilter="Filter by device", pfall="All devices",
+            none="Nothing for this selection yet."),
 }
 PF = {"de": {"iPhone": "iPhone &amp; iPad"}, "en": {"iPhone": "iPhone &amp; iPad"}}
+FILTER_PF = ["iPhone", "Android", "Windows", "Mac"]
 
 
 def badge(kind, lang):
@@ -118,8 +121,9 @@ def card(a, lang):
     if site:
         go += f'<a class="more" href="{site}">{t["site"]} →</a>'
     ico = f'<img class="ico" src="img/icons/{key}.webp" alt="" width="56" height="56" loading="lazy">' if os.path.exists(os.path.join(ROOT, "img/icons", key + ".webp")) else f'<span class="ico mono" aria-hidden="true">{name[0]}</span>'
-    return (f'<article class="app" data-cat="{cat}" data-a="{key}">{ico}'
-            f'<div><h4>{title}</h4><p>{de if lang == "de" else en}</p><div class="badges">{st}{badges}</div>'
+    # Status und Geräte direkt unter dem Namen, Store-Knöpfe unten bündig
+    return (f'<article class="app{"" if ok else " wip"}" data-cat="{cat}" data-a="{key}" data-pf="{" ".join(pfs)}">{ico}'
+            f'<div><h4>{title}</h4><div class="badges">{st}{badges}</div><p>{de if lang == "de" else en}</p>'
             + (f'<div class="go">{go}</div>' if go else "") + '</div></article>')
 
 
@@ -127,14 +131,19 @@ def render(lang):
     t = L[lang]
     chips = f'<button class="chip on" data-k="all" aria-pressed="true">{t["all"]}</button>' + "".join(
         f'<button class="chip" data-k="{k}" aria-pressed="false">{de if lang == "de" else en}</button>' for k, de, en in CATS)
+    pchips = f'<button class="chip on" data-p="all" aria-pressed="true">{t["pfall"]}</button>' + "".join(
+        f'<button class="chip" data-p="{p}" aria-pressed="false">{PF[lang].get(p, p)}</button>' for p in FILTER_PF)
     out = [f'<!-- katalog:start -->\n<section id="apps">\n  <div class="head"><div class="reveal"><div class="kicker">{t["kicker"]}</div>'
            f'<h2 class="serif">{t["h2"]}</h2><p class="lead">{t["lead"]}</p></div>\n'
-           f'  <div class="chips reveal" id="kat" role="group" aria-label="{t["filter"]}">{chips}</div></div>']
+           f'  <div class="filters reveal"><div class="chips" id="kat" role="group" aria-label="{t["filter"]}">{chips}</div>'
+           f'<div class="chips" id="pfk" role="group" aria-label="{t["pfilter"]}">{pchips}</div></div></div>']
     for k, de, en in CATS:
         note = NOTE.get(k)
         out.append(f'  <div class="group" data-k="{k}"><h3 class="serif">{de if lang == "de" else en}</h3>'
                    + (f'<p class="hint-note">{note[0 if lang == "de" else 1]}</p>' if note else "")
-                   + '<div class="cat">' + "".join(card(a, lang) for a in APPS if a[2] == k) + '</div></div>')
+                   # Verfügbares zuerst, sonst Reihenfolge wie in APPS
+                   + '<div class="cat">' + "".join(card(a, lang) for a in sorted((a for a in APPS if a[2] == k), key=lambda a: not a[4])) + '</div></div>')
+    out.append(f'  <p class="none" id="none" hidden>{t["none"]}</p>')
     out.append('</section>\n<!-- katalog:end -->')
     return "\n".join(out)
 
