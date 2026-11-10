@@ -1,10 +1,11 @@
-"""Builds en/index.html from index.html. Edit the German page, then run: python3 tools/build_en.py
+"""Builds en/index.html and en/apps/index.html from index.html. Edit the German page, then run:
+python3 tools/catalog.py && python3 tools/build_en.py
 Every source string must exist, so a changed German text fails loudly instead of leaving German in the English page."""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import catalog
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE = "https://minh.systems/MinhNguyenStudios/"
+BASE = catalog.BASE
 
 T = [
  # head
@@ -22,7 +23,7 @@ T = [
  # nav
  ('<a class="lang" href="en/" hreflang="en" lang="en" title="English">EN</a>', '<a class="lang" href="../" hreflang="de" lang="de" title="Deutsch">DE</a>'),
  ('aria-label="Minh Nguyen Studios – Startseite"', 'aria-label="Minh Nguyen Studios – home"'),
- ('<li><a href="#apps">Apps &amp; Spiele</a></li><li><a href="#spiele">Werkstatt</a></li><li><a href="#ratgeber">Ratgeber</a></li>', '<li><a href="#apps">Apps &amp; games</a></li><li><a href="#spiele">Workshop</a></li><li><a href="#ratgeber">Guides</a></li>'),
+ ('<li><a href="#spiele">Große Spiele</a></li><li><a href="apps/">Apps &amp; Spiele</a></li><li><a href="#ratgeber">Ratgeber</a></li>', '<li><a href="#spiele">Big games</a></li><li><a href="apps/">Apps &amp; games</a></li><li><a href="#ratgeber">Guides</a></li>'),
  ('<span class="ml">Menü</span>', '<span class="ml">Menu</span>'),
  ('<span class="tl" aria-hidden="true">Hell / Dunkel</span>', '<span class="tl" aria-hidden="true">Light / dark</span>'),
  ('aria-label="Hell oder dunkel" title="Hell oder dunkel"', 'aria-label="Light or dark" title="Light or dark"'),
@@ -33,8 +34,8 @@ T = [
  ('Apps &amp; Spiele, die man <em>weitererzählt.</em>', 'Apps &amp; games you can’t <em>stop recommending.</em>'),
  ('Ein unabhängiges Studio aus Deutschland. Wir bauen kleine, private Werkzeuge für Ordnung und Alltag, liebevolle Welten für die Kleinsten – und tiefe Strategiespiele für alle, die gern lange nachdenken.',
   'An independent studio from Germany. We build small, private tools for tidying up and everyday life, loving worlds for the little ones – and deep strategy games for everyone who likes to think things through.'),
- ('>Verfügbare Apps &amp; Spiele</a>', '>Available apps &amp; games</a>'),
- ('href="#spiele">Aus der Werkstatt</a>', 'href="#spiele">From the workshop</a>'),
+ ('href="#spiele">Unsere großen Spiele</a>', 'href="#spiele">Our big games</a>'),
+ ('href="apps/">Alle Apps &amp; Spiele</a>', 'href="apps/">All apps &amp; games</a>'),
  ('<span>Direkt zu</span>', '<span>Jump to</span>'),
  # featured
  ('<div class="kicker">Aus der Werkstatt</div><h2 class="serif">Zehn Welten, an denen wir bauen</h2>', '<div class="kicker">From the workshop</div><h2 class="serif">Ten worlds we’re building</h2>'),
@@ -146,15 +147,14 @@ T = [
 ]
 
 PATHS = [('src="brand/badges/', 'src="../brand/badges/'), ('src="img/', 'src="../img/'), ('src="brand/', 'src="../brand/'), ('href="brand/', 'href="../brand/'),
-         ('href="fonts.css"', 'href="../fonts.css"'), ('href="fonts/', 'href="../fonts/'), ('data-video="video/', 'data-video="../video/')]
+         ('href="fonts.css"', 'href="../fonts.css"'), ('href="site.css"', 'href="../site.css"'), ('src="site.js"', 'src="../site.js"'), ('href="fonts/', 'href="../fonts/'), ('data-video="video/', 'data-video="../video/')]
 
 s = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
-s = catalog.BLOCK.sub(lambda m: catalog.render("en"), s)
+s = catalog.BLOCK.sub(lambda m: catalog.strip("en"), s)
 missing = [de for de, _ in T if de not in s]
 if missing:
     raise SystemExit("German source strings not found (update tools/build_en.py):\n- " + "\n- ".join(m[:90] for m in missing))
 for de, en in T + PATHS:
     s = s.replace(de, en)
-os.makedirs(os.path.join(ROOT, "en"), exist_ok=True)
-open(os.path.join(ROOT, "en", "index.html"), "w", encoding="utf-8").write(s)
-print("en/index.html written")
+catalog.write("en/index.html", s)
+catalog.write("en/apps/index.html", catalog.page(s, "en"))
