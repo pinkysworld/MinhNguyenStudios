@@ -75,21 +75,21 @@ APPS = [
   "Stallbuch fürs Pferd: Pflege, Termine und Dokumente.", "A stable book for your horse: care, appointments and documents."),
  ("summgarten", "Summgarten", "kinder", ["iPhone", "Mac", "Windows", "Android"], True, S+"Summgarten/", [("apple", APPLE+"6824160993"), ("ms", MS+"9PGTW423BB1H"), ("play", PLAY+"de.michelnguyen.klanggarten")],
   "Singender Garten für Kinder ab 3 – im Microsoft Store als Hum Garden.", "A singing garden for kids 3+ – called Hum Garden in the Microsoft Store."),
- ("reparierer", "Kleiner Reparierer", "kinder", ["Windows", "iPhone (bald)", "Android (bald)"], True, S+"KleinerReparierer/", [("ms", MS+"9N71QS2JNCVW")],
+ ("reparierer", "Kleiner Reparierer", "kinder", ["Windows"], True, S+"KleinerReparierer/", [("ms", MS+"9N71QS2JNCVW")],
   "Mit Biber Bruno reparieren, putzen und anmalen – ohne Texte, ohne Scheitern.", "Fix, scrub and paint with Bruno the beaver – no reading, no failing."),
 ]
 
 L = {
- "de": dict(all="Alle", ok="Verfügbar", soon="Demnächst", ms="Microsoft Store", apple="App Store", site="Website",
+ "de": dict(all="Alle", ok="Verfügbar", soon="In Arbeit", ms="Microsoft Store", apple="App Store", site="Website",
             kicker="Alles aus unserer Werkstatt", h2="Apps &amp; Spiele",
             lead="Kleine, private Werkzeuge und ruhige Spiele für Windows, iPhone, iPad, Android und Mac – ohne Konto, meist offline.",
             filter="Nach Bereich filtern"),
- "en": dict(all="All", ok="Available", soon="Coming soon", ms="Microsoft Store", apple="App Store", site="Website",
+ "en": dict(all="All", ok="Available", soon="In the works", ms="Microsoft Store", apple="App Store", site="Website",
             kicker="Everything from our workshop", h2="Apps &amp; games",
             lead="Small, private tools and calm games for Windows, iPhone, iPad, Android and Mac – no account, mostly offline.",
             filter="Filter by category"),
 }
-PF = {"de": {"iPhone": "iPhone &amp; iPad", "iPhone (bald)": "iPhone &amp; iPad (bald)"}, "en": {"iPhone": "iPhone &amp; iPad", "Android (bald)": "Android (soon)", "iPhone (bald)": "iPhone &amp; iPad (soon)"}}
+PF = {"de": {"iPhone": "iPhone &amp; iPad"}, "en": {"iPhone": "iPhone &amp; iPad"}}
 
 
 def badge(kind, lang):
