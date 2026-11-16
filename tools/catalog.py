@@ -1,7 +1,7 @@
 """App- und Spielekatalog – eine Datenquelle für DE und EN, für Startseite und Katalogseite.
 python3 tools/catalog.py schreibt den Streifen „Jetzt verfügbar“ in index.html (zwischen den katalog-Markern)
 und baut die Katalogseite apps/index.html; tools/build_en.py baut daraus en/index.html und en/apps/index.html.
-Store-Links nur eintragen, wenn die Store-Seite live ist (alle Stores geprüft 09.11.2026, siehe docs/LIVE_STATUS.md)."""
+Store-Links nur eintragen, wenn die Store-Seite live ist (alle Stores geprüft 09.11.2026, Docloft und SafeSort Photos 16.11.2026, siehe docs/LIVE_STATUS.md)."""
 import os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE = "https://minh.systems/MinhNguyenStudios/"
@@ -38,9 +38,9 @@ APPS = [
   "Ordner vergleichen, synchronisieren und Backups prüfen – mit Vorschau und Rückgängig.", "Compare and sync folders and check backups – with preview and undo."),
  ("pathrova", "Pathrova", "ordnung", ["Windows"], True, S+"Pathrova/", [("ms", MS+"9NJN21Z01WPM")],
   "Findet zu lange Pfade und ungültige Namen, bevor du nach OneDrive oder SharePoint synchronisierst.", "Finds overly long paths and invalid names before you sync to OneDrive or SharePoint."),
- ("ablagefuchs", "Ablagefuchs", "ordnung", ["Windows"], False, None, [],
+ ("docloft", "Docloft", "ordnung", ["Windows"], True, S+"Docloft/", [("ms", MS+"9NRVKF4456H6")],
   "Verträge, Rechnungen und Schreiben an einem Ort – mit Texterkennung und Fristen, offline.", "Contracts, invoices and letters in one place – with text recognition and deadlines, offline."),
- ("fotokehr", "SafeSort Photos", "ordnung", ["Windows"], False, S+"SafeSort-Photos/", [],
+ ("fotokehr", "SafeSort Photos", "ordnung", ["Windows"], True, S+"SafeSort-Photos/", [("ms", MS+"9P6WTFZ3XF96")],
   "Fotos und Videos lokal nach Datum sortieren – Originale bleiben unverändert.", "Sort photos and videos by date, locally – originals stay untouched."),
  ("plauderbuch", "Chatbound", "ordnung", ["Windows"], True, S+"Chatbound/", [("ms", MS+"9PJV28CQJV8K")],
   "Exportierte Chats durchsuchen, zusammenführen und als Buch-PDF setzen – lokal, ohne Konto.", "Search and merge exported chats and set them as a book PDF – local, no account."),
@@ -81,7 +81,7 @@ APPS = [
 ]
 
 # Auswahl für den Streifen „Jetzt verfügbar“ auf der Startseite (nur Titel mit Store-Link; die großen Spiele stehen darüber)
-FEATURED = ["shelterfall", "nomad", "cogwisp", "folvane", "monatsklar", "shotsift"]
+FEATURED = ["shelterfall", "nomad", "cogwisp", "folvane", "monatsklar", "docloft", "shotsift"]
 
 L = {
  "de": dict(all="Alle", ok="Verfügbar", soon="In Arbeit", site="Website",
