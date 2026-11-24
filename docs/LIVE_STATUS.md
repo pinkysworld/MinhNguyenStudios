@@ -32,6 +32,8 @@ Geprüft wurde nur öffentlich Erreichbares. Ein Store-Badge steht auf der Seite
 | Belegora | Microsoft Store | https://apps.microsoft.com/detail/9NB7QSNC6MJQ | live |
 | Kleiner Reparierer | Microsoft Store | https://apps.microsoft.com/detail/9N71QS2JNCVW | live |
 | SpeakAnchor | Microsoft Store | https://apps.microsoft.com/detail/9PF13FM93XSJ | live – **neu auf der Seite ergänzt** (9,99 €) |
+| Docloft | Microsoft Store | https://apps.microsoft.com/detail/9NRVKF4456H6 | live |
+| Plainprint | Microsoft Store | https://apps.microsoft.com/detail/9PL3RT8GS1NX | live – ergänzt 24.11.2026 |
 | AppSweep | Website (Gumroad) | https://minh.systems/AppSweep/ | Website live; Mac App Store nicht live (ASC: abgelehnt) |
 | DiskLoom | Website (Gumroad) | https://minh.systems/DiskLoom/ | Website live; nicht in App Store Connect |
 | Focusledger | Website (Gumroad) | https://minh.systems/Focusledger-Pro/ | Website live; Mac App Store nicht live (ASC: abgelehnt) |
