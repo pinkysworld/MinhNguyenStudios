@@ -12,6 +12,8 @@ Geprüft wurde nur öffentlich Erreichbares. Ein Store-Badge steht auf der Seite
 
 | Titel | Plattform | Link | Status |
 |---|---|---|---|
+| Kontor | Microsoft Store | https://apps.microsoft.com/detail/9NHXXNR55XT6 | live (25.11.2026) |
+| Gute Nacht, Spielzeug | Google Play | https://play.google.com/store/apps/details?id=de.michelnguyen.gutenachtspielzeug | live (25.11.2026) |
 | Shelter Fall | App Store | https://apps.apple.com/app/id6759238842 | live |
 | Nomad Kitchen Tycoon | App Store | https://apps.apple.com/app/id6759504817 | live |
 | Nomad Kitchen Tycoon | Google Play | https://play.google.com/store/apps/details?id=com.minhstudios.nomadkitchen | live |
