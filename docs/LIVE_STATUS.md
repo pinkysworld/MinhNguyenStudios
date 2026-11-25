@@ -46,7 +46,6 @@ Geprüft wurde nur öffentlich Erreichbares. Ein Store-Badge steht auf der Seite
 | Titel | Plattform | Stand |
 |---|---|---|
 | Kleiner Reparierer | App Store | ASC: vom Entwickler zurückgezogen; nicht öffentlich |
-| Kleiner Reparierer | Google Play | nicht auf der Entwicklerseite |
 | Gute Nacht, Spielzeug | App Store | ASC: abgelehnt; nicht öffentlich |
 | NightTalk | App Store | ASC: vom Entwickler zurückgezogen |
 | Ringjahr, Signal Lost, Kontor, Breach Inc. | App Store | ASC: in Vorbereitung |
